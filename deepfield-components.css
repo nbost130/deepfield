@@ -568,6 +568,7 @@
   font-size: 0.7em;
   color: var(--text-muted, #8aabcc);
   letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 
 .deepfield-tier-table .tier-confirmed  { color: #3dc9a0; font-family: var(--font-monospace-theme, monospace); font-size: 0.7em; letter-spacing: 0.1em; }

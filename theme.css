@@ -384,51 +384,47 @@ body.theme-dark .callout-fold {
   opacity: 0.5;
 }
 
-/* ── CUSTOM CHECKBOX STATES ── */
-body.theme-dark .task-list-item[data-task="/"] input[type=checkbox],
-body.theme-dark .task-list-item[data-task="/"] > input {
-  --checkbox-color: rgba(192, 120, 32, 0.2);
-  --checkbox-border-color: #c07820;
-  --checkbox-marker-color: #e09840;
+/* ── CUSTOM CHECKBOX STATES — direct bg/border for reliable override ── */
+/* [x] completed — accent glow */
+body.theme-dark input[data-task="x"]:checked,
+body.theme-dark input[data-task="X"]:checked,
+body.theme-dark li[data-task="x"] > input:checked,
+body.theme-dark li[data-task="X"] > input:checked {
+  background-color: rgba(var(--interactive-accent-rgb, 29,111,255), 0.2) !important;
+  border-color: var(--text-accent) !important;
+  box-shadow: 0 0 6px rgba(var(--interactive-accent-rgb, 29,111,255), 0.4) !important;
 }
 
-body.theme-dark .task-list-item[data-task="-"] input[type=checkbox],
-body.theme-dark .task-list-item[data-task="-"] > input {
-  --checkbox-color: rgba(61, 60, 60, 0.2);
-  --checkbox-border-color: var(--text-faint);
-  --checkbox-marker-color: var(--text-faint);
+/* [/] in progress — amber */
+body.theme-dark input[data-task="/"],
+body.theme-dark li[data-task="/"] > input {
+  background-color: rgba(192, 120, 32, 0.2) !important;
+  border-color: #c07820 !important;
+  box-shadow: 0 0 6px rgba(192, 120, 32, 0.35) !important;
 }
 
-body.theme-dark .task-list-item[data-task=">"] input[type=checkbox],
-body.theme-dark .task-list-item[data-task=">"] > input {
-  --checkbox-color: rgba(155, 125, 255, 0.2);
-  --checkbox-border-color: #9b7dff;
-  --checkbox-marker-color: #9b7dff;
+/* [-] cancelled — grey */
+body.theme-dark input[data-task="-"],
+body.theme-dark li[data-task="-"] > input {
+  background-color: rgba(100, 100, 100, 0.15) !important;
+  border-color: var(--text-faint) !important;
+  box-shadow: none !important;
 }
 
-body.theme-dark .task-list-item[data-task="!"] input[type=checkbox],
-body.theme-dark .task-list-item[data-task="!"] > input {
-  --checkbox-color: rgba(224, 96, 96, 0.2);
-  --checkbox-border-color: #e06060;
-  --checkbox-marker-color: #e06060;
+/* [>] deferred — purple */
+body.theme-dark input[data-task=">"],
+body.theme-dark li[data-task=">"] > input {
+  background-color: rgba(155, 125, 255, 0.2) !important;
+  border-color: #9b7dff !important;
+  box-shadow: 0 0 6px rgba(155, 125, 255, 0.35) !important;
 }
 
-/* Glow per state — Option D */
-body.theme-dark .task-list-item[data-task="x"] input[type=checkbox]:checked,
-body.theme-dark .task-list-item[data-task="X"] input[type=checkbox]:checked {
-  box-shadow: 0 0 6px rgba(var(--interactive-accent-rgb, 29,111,255), 0.4);
-}
-
-body.theme-dark .task-list-item[data-task="/"] input[type=checkbox] {
-  box-shadow: 0 0 6px rgba(192, 120, 32, 0.35);
-}
-
-body.theme-dark .task-list-item[data-task=">"] input[type=checkbox] {
-  box-shadow: 0 0 6px rgba(155, 125, 255, 0.35);
-}
-
-body.theme-dark .task-list-item[data-task="!"] input[type=checkbox] {
-  box-shadow: 0 0 6px rgba(224, 96, 96, 0.35);
+/* [!] important — red */
+body.theme-dark input[data-task="!"],
+body.theme-dark li[data-task="!"] > input {
+  background-color: rgba(224, 96, 96, 0.2) !important;
+  border-color: #e06060 !important;
+  box-shadow: 0 0 6px rgba(224, 96, 96, 0.35) !important;
 }
 
 /* Text styling per state */
