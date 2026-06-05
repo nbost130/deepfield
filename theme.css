@@ -261,6 +261,47 @@ body.theme-dark .workspace-split > .workspace-leaf + .workspace-leaf {
   border-left: 1px solid var(--background-modifier-border) !important;
 }
 
+/* ── H3–H6 STYLING — Option B: H3 sans, H4–H6 mono uppercase ── */
+body.theme-dark .markdown-rendered h3,
+body.theme-dark .cm-header-3 {
+  font-family: var(--font-text-theme);
+  font-size: 1em;
+  font-weight: 600;
+  color: #9ab8dc;
+  letter-spacing: 0.01em;
+}
+
+body.theme-dark .markdown-rendered h4,
+body.theme-dark .cm-header-4 {
+  font-family: var(--font-monospace-theme);
+  font-size: 0.72em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+}
+
+body.theme-dark .markdown-rendered h5,
+body.theme-dark .cm-header-5 {
+  font-family: var(--font-monospace-theme);
+  font-size: 0.65em;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+}
+
+body.theme-dark .markdown-rendered h6,
+body.theme-dark .cm-header-6 {
+  font-family: var(--font-monospace-theme);
+  font-size: 0.6em;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  opacity: 0.6;
+}
+
 /* ── H2 STYLING — Deepfield monospace uppercase ── */
 body.theme-dark .markdown-rendered h2,
 body.theme-dark .cm-header-2 {
@@ -370,6 +411,24 @@ body.theme-dark .task-list-item[data-task="!"] > input {
   --checkbox-color: rgba(224, 96, 96, 0.2);
   --checkbox-border-color: #e06060;
   --checkbox-marker-color: #e06060;
+}
+
+/* Glow per state — Option D */
+body.theme-dark .task-list-item[data-task="x"] input[type=checkbox]:checked,
+body.theme-dark .task-list-item[data-task="X"] input[type=checkbox]:checked {
+  box-shadow: 0 0 6px rgba(var(--interactive-accent-rgb, 29,111,255), 0.4);
+}
+
+body.theme-dark .task-list-item[data-task="/"] input[type=checkbox] {
+  box-shadow: 0 0 6px rgba(192, 120, 32, 0.35);
+}
+
+body.theme-dark .task-list-item[data-task=">"] input[type=checkbox] {
+  box-shadow: 0 0 6px rgba(155, 125, 255, 0.35);
+}
+
+body.theme-dark .task-list-item[data-task="!"] input[type=checkbox] {
+  box-shadow: 0 0 6px rgba(224, 96, 96, 0.35);
 }
 
 /* Text styling per state */
