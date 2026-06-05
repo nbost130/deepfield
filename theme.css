@@ -274,45 +274,29 @@ body.theme-dark .cm-header-2 {
 }
 
 /* ── TASK LIST CHECKBOXES ── */
-body.theme-dark .task-list-item-checkbox {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 15px;
-  height: 15px;
-  border: 1px solid var(--text-faint);
-  border-radius: 0 !important;
-  background: transparent;
-  cursor: pointer;
-  position: relative;
-  flex-shrink: 0;
-  margin-top: 2px;
-  vertical-align: middle;
-}
-
-body.theme-dark .task-list-item-checkbox:hover {
-  border-color: var(--interactive-accent);
-}
-
-body.theme-dark .task-list-item-checkbox:checked {
-  background: var(--interactive-accent);
-  border-color: var(--text-accent);
-}
-
-body.theme-dark .task-list-item-checkbox:checked::after {
-  content: '';
-  position: absolute;
-  left: 3px;
-  top: 1px;
-  width: 7px;
-  height: 4px;
-  border-left: 1.5px solid var(--background-primary);
-  border-bottom: 1.5px solid var(--background-primary);
-  transform: rotate(-45deg);
+body.theme-dark {
+  --checkbox-radius: 0px;
+  --checkbox-color: var(--interactive-accent);
+  --checkbox-color-hover: var(--text-accent);
+  --checkbox-border-color: var(--text-faint);
+  --checkbox-border-color-hover: var(--interactive-accent);
+  --checkbox-marker-color: var(--background-primary);
 }
 
 body.theme-dark .task-list-item.is-checked,
 body.theme-dark .task-list-item.is-checked > p {
   text-decoration: line-through;
+  color: var(--text-faint);
+}
+
+/* ── NESTED LIST — open circle at second level ── */
+body.theme-dark .markdown-rendered ul ul,
+body.theme-dark .cm-content ul ul {
+  list-style-type: circle;
+}
+
+body.theme-dark .markdown-rendered ul ul > li::marker,
+body.theme-dark .cm-content ul ul > li::marker {
   color: var(--text-faint);
 }
 
