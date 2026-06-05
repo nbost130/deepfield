@@ -11,6 +11,43 @@
    Works with any theme — falls back to Obsidian accent colors.
    ============================================================ */
 
+/* ── SHARED: hide callout icon (.callout-icon is the real class) */
+.callout[data-callout="attribution"] .callout-icon,
+.callout[data-callout="hud"] .callout-icon,
+.callout[data-callout="punchline"] .callout-icon,
+.callout[data-callout="origin"] .callout-icon,
+.callout[data-callout="entry"] .callout-icon,
+.callout[data-callout="bracket"] .callout-icon,
+.callout[data-callout="transition"] .callout-icon,
+.callout[data-callout="prose"] .callout-icon,
+.callout[data-callout="horizon"] .callout-icon,
+.callout[data-callout="attribution"] .callout-icon svg,
+.callout[data-callout="hud"] .callout-icon svg,
+.callout[data-callout="punchline"] .callout-icon svg,
+.callout[data-callout="origin"] .callout-icon svg,
+.callout[data-callout="entry"] .callout-icon svg,
+.callout[data-callout="bracket"] .callout-icon svg,
+.callout[data-callout="transition"] .callout-icon svg,
+.callout[data-callout="prose"] .callout-icon svg,
+.callout[data-callout="horizon"] .callout-icon svg {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Close the gap the icon leaves */
+.callout[data-callout="attribution"] .callout-title,
+.callout[data-callout="hud"] .callout-title,
+.callout[data-callout="punchline"] .callout-title,
+.callout[data-callout="origin"] .callout-title,
+.callout[data-callout="entry"] .callout-title,
+.callout[data-callout="bracket"] .callout-title,
+.callout[data-callout="transition"] .callout-title,
+.callout[data-callout="prose"] .callout-title,
+.callout[data-callout="horizon"] .callout-title {
+  gap: 0 !important;
+}
+
 /* ── SHARED: strip all default callout chrome ───────────────── */
 .callout[data-callout="attribution"],
 .callout[data-callout="hud"],
@@ -25,30 +62,6 @@
   padding: 0 !important;
 }
 
-/* Hide pencil icon on all deepfield callouts */
-.callout[data-callout="attribution"] .callout-title-icon,
-.callout[data-callout="hud"] .callout-title-icon,
-.callout[data-callout="punchline"] .callout-title-icon,
-.callout[data-callout="origin"] .callout-title-icon,
-.callout[data-callout="entry"] .callout-title-icon,
-.callout[data-callout="bracket"] .callout-title-icon,
-.callout[data-callout="transition"] .callout-title-icon,
-.callout[data-callout="prose"] .callout-title-icon,
-.callout[data-callout="horizon"] .callout-title-icon,
-.callout[data-callout="attribution"] .callout-title-icon *,
-.callout[data-callout="hud"] .callout-title-icon *,
-.callout[data-callout="punchline"] .callout-title-icon *,
-.callout[data-callout="origin"] .callout-title-icon *,
-.callout[data-callout="entry"] .callout-title-icon *,
-.callout[data-callout="bracket"] .callout-title-icon *,
-.callout[data-callout="transition"] .callout-title-icon *,
-.callout[data-callout="prose"] .callout-title-icon *,
-.callout[data-callout="horizon"] .callout-title-icon * {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  visibility: hidden !important;
-}
 
 
 /* ── [!attribution] ─────────────────────────────────────────────
