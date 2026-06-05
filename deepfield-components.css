@@ -21,6 +21,7 @@
 .callout[data-callout="transition"] .callout-icon,
 .callout[data-callout="prose"] .callout-icon,
 .callout[data-callout="horizon"] .callout-icon,
+.callout[data-callout="divider"] .callout-icon,
 .callout[data-callout="attribution"] .callout-icon svg,
 .callout[data-callout="hud"] .callout-icon svg,
 .callout[data-callout="punchline"] .callout-icon svg,
@@ -391,6 +392,73 @@
   color: var(--text-faint) !important;
   font-size: 0.82em !important;
 }
+
+
+/* ── [!divider] ─────────────────────────────────────────────────
+   Scan line with centered text label.
+   Usage:
+     > [!divider] SECTION_END · 0347.001
+   ─────────────────────────────────────────────────────────────── */
+.callout[data-callout="divider"] {
+  border: none !important;
+  background: transparent !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.8em !important;
+  margin: 1.8em 0 !important;
+  padding: 0 !important;
+}
+
+.callout[data-callout="divider"]::before,
+.callout[data-callout="divider"]::after {
+  content: '' !important;
+  display: block !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: var(--interactive-accent, #1d6fff) !important;
+  flex-shrink: 0 !important;
+}
+
+.callout[data-callout="divider"] .callout-title {
+  display: flex !important;
+  align-items: center !important;
+  flex: 1 !important;
+  gap: 0.8em !important;
+  background: transparent !important;
+  padding: 0 !important;
+  gap: 0 !important;
+}
+
+.callout[data-callout="divider"] .callout-title::before {
+  content: '' !important;
+  flex: 1 !important;
+  height: 1px !important;
+  background: linear-gradient(to right, rgba(29,111,255,.5), rgba(29,111,255,.15)) !important;
+  display: block !important;
+  margin-right: 0.8em !important;
+}
+
+.callout[data-callout="divider"] .callout-title::after {
+  content: '' !important;
+  flex: 1 !important;
+  height: 1px !important;
+  background: linear-gradient(to left, rgba(29,111,255,.5), rgba(29,111,255,.15)) !important;
+  display: block !important;
+  margin-left: 0.8em !important;
+}
+
+.callout[data-callout="divider"] .callout-title-inner {
+  font-family: var(--font-monospace-theme, monospace) !important;
+  font-size: 0.8em !important;
+  letter-spacing: 0.18em !important;
+  color: var(--text-faint) !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
+.callout[data-callout="divider"] .callout-icon,
+.callout[data-callout="divider"] .callout-content { display: none !important; }
 
 
 /* ── [!horizon] ──────────────────────────────────────────────────

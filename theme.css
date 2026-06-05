@@ -276,11 +276,11 @@ body.theme-dark .cm-header-2 {
 /* ── TASK LIST CHECKBOXES ── */
 body.theme-dark {
   --checkbox-radius: 0px;
-  --checkbox-color: var(--interactive-accent);
-  --checkbox-color-hover: var(--text-accent);
+  --checkbox-color: rgba(var(--interactive-accent-rgb, 29,111,255), 0.2);
+  --checkbox-color-hover: rgba(var(--interactive-accent-rgb, 29,111,255), 0.35);
   --checkbox-border-color: var(--text-faint);
   --checkbox-border-color-hover: var(--interactive-accent);
-  --checkbox-marker-color: var(--background-primary);
+  --checkbox-marker-color: var(--text-accent);
 }
 
 body.theme-dark .task-list-item.is-checked,
