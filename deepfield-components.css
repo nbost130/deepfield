@@ -140,7 +140,7 @@
 
 .callout[data-callout="hud"] .callout-title-inner {
   font-family: var(--font-monospace-theme, monospace) !important;
-  font-size: 0.58em !important;
+  font-size: 0.66em !important;
   letter-spacing: 0.16em !important;
   color: var(--text-faint) !important;
   text-transform: uppercase !important;
@@ -290,7 +290,7 @@
 
 .callout[data-callout="bracket"] .callout-title-inner {
   font-family: var(--font-monospace-theme, monospace) !important;
-  font-size: 0.6em !important;
+  font-size: 0.66em !important;
   letter-spacing: 0.14em !important;
   color: var(--text-faint) !important;
   text-transform: uppercase !important;
@@ -330,12 +330,25 @@
   border-top: 1px solid rgba(29, 111, 255, 0.08) !important;
 }
 
-.callout[data-callout="transition"] .callout-content p {
+/* First line — subtitle "Ten billion billion heavier" */
+.callout[data-callout="transition"] .callout-content p:first-of-type {
   font-family: var(--font-monospace-theme, monospace) !important;
-  font-size: 0.65em !important;
-  letter-spacing: 0.12em !important;
+  font-size: 0.6em !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  color: var(--text-faint) !important;
+  font-weight: 400 !important;
+  margin: 0 0 0.4em !important;
+}
+
+/* Second line — tier range info */
+.callout[data-callout="transition"] .callout-content p + p {
+  font-family: var(--font-monospace-theme, monospace) !important;
+  font-size: 0.58em !important;
+  letter-spacing: 0.1em !important;
   text-transform: uppercase !important;
   color: var(--text-muted) !important;
+  font-weight: 400 !important;
   margin: 0 !important;
 }
 
