@@ -11,7 +11,7 @@
    Works with any theme — falls back to Obsidian accent colors.
    ============================================================ */
 
-/* ── SHARED: suppress default callout chrome ────────────────── */
+/* ── SHARED: strip all default callout chrome ───────────────── */
 .callout[data-callout="attribution"],
 .callout[data-callout="hud"],
 .callout[data-callout="punchline"],
@@ -21,11 +21,11 @@
 .callout[data-callout="transition"],
 .callout[data-callout="prose"],
 .callout[data-callout="horizon"] {
-  --callout-color: var(--interactive-accent-rgb, 29, 111, 255);
-  border-radius: 0;
-  padding: 0;
+  border-radius: 0 !important;
+  padding: 0 !important;
 }
 
+/* Hide pencil icon on all deepfield callouts */
 .callout[data-callout="attribution"] .callout-title-icon,
 .callout[data-callout="hud"] .callout-title-icon,
 .callout[data-callout="punchline"] .callout-title-icon,
@@ -35,56 +35,60 @@
 .callout[data-callout="transition"] .callout-title-icon,
 .callout[data-callout="prose"] .callout-title-icon,
 .callout[data-callout="horizon"] .callout-title-icon {
-  display: none;
+  display: none !important;
 }
 
 
 /* ── [!attribution] ─────────────────────────────────────────────
    Usage:
      > [!attribution] Proof · Cambridge · 1974
-     > **Stephen Hawking**
+     > Stephen Hawking
      > Every black hole leaks energy. Slowly · Unstoppably
+   Note: write the name and descriptor as plain text (no bold)
    ─────────────────────────────────────────────────────────────── */
 .callout[data-callout="attribution"] {
-  border-left: 2px solid var(--interactive-accent, #1d6fff);
-  border-top: none;
-  border-right: none;
-  border-bottom: none;
-  background: rgba(var(--callout-color), 0.04);
+  border-left: 2px solid var(--interactive-accent, #1d6fff) !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+  background: rgba(29, 111, 255, 0.04) !important;
   margin: 1.2em 0;
 }
 
 .callout[data-callout="attribution"] .callout-title {
-  font-family: var(--font-monospace-theme, monospace);
-  font-size: 0.6em;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-  background: transparent;
-  padding: 0.7em 1em 0.2em;
-  font-weight: 400;
+  font-family: var(--font-monospace-theme, monospace) !important;
+  font-size: 0.6em !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: var(--text-faint) !important;
+  background: transparent !important;
+  padding: 0.7em 1em 0.2em !important;
+  font-weight: 400 !important;
 }
 
 .callout[data-callout="attribution"] .callout-content {
-  padding: 0 1em 0.8em;
+  padding: 0 1em 0.8em !important;
 }
 
-.callout[data-callout="attribution"] .callout-content p:first-child {
-  font-size: 1.05em;
-  font-weight: 700;
-  color: var(--text-normal);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-bottom: 0.2em;
+/* Name — first paragraph, large uppercase */
+.callout[data-callout="attribution"] .callout-content p:first-of-type {
+  font-size: 1.05em !important;
+  font-weight: 700 !important;
+  color: var(--text-normal) !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 0.2em !important;
 }
 
-.callout[data-callout="attribution"] .callout-content p:not(:first-child) {
-  font-family: var(--font-monospace-theme, monospace);
-  font-size: 0.62em;
-  letter-spacing: 0.14em;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  margin: 0;
+/* Descriptor — all other paragraphs, small mono */
+.callout[data-callout="attribution"] .callout-content p + p {
+  font-family: var(--font-monospace-theme, monospace) !important;
+  font-size: 0.62em !important;
+  letter-spacing: 0.14em !important;
+  color: var(--text-muted) !important;
+  text-transform: uppercase !important;
+  font-weight: 400 !important;
+  margin: 0 !important;
 }
 
 
@@ -94,47 +98,33 @@
      > We do not have the words yet.
    ─────────────────────────────────────────────────────────────── */
 .callout[data-callout="hud"] {
-  display: flex;
-  border: none;
-  background: transparent;
+  border-left: 3px solid var(--interactive-accent, #1d6fff) !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+  background: rgba(29, 111, 255, 0.04) !important;
   margin: 1em 0;
-}
-
-.callout[data-callout="hud"]::before {
-  content: '';
-  display: block;
-  width: 3px;
-  background: var(--interactive-accent, #1d6fff);
-  opacity: 0.6;
-  flex-shrink: 0;
-  align-self: stretch;
+  padding: 0 !important;
 }
 
 .callout[data-callout="hud"] .callout-title {
-  display: block;
-  background: transparent;
-  padding: 0;
+  background: transparent !important;
+  padding: 0.5em 1em 0 !important;
 }
 
 .callout[data-callout="hud"] .callout-title-inner {
-  display: block;
-  font-family: var(--font-monospace-theme, monospace);
-  font-size: 0.58em;
-  letter-spacing: 0.16em;
-  color: var(--text-faint);
-  text-transform: uppercase;
-  padding: 0.6em 1em 0;
+  font-family: var(--font-monospace-theme, monospace) !important;
+  font-size: 0.58em !important;
+  letter-spacing: 0.16em !important;
+  color: var(--text-faint) !important;
+  text-transform: uppercase !important;
 }
 
 .callout[data-callout="hud"] .callout-content {
-  flex: 1;
-  padding: 0.4em 1em 0.75em;
-  background: rgba(var(--callout-color), 0.04);
-  border: 1px solid rgba(var(--callout-color), 0.1);
-  border-left: none;
-  font-size: 0.9em;
-  line-height: 1.65;
-  color: var(--text-muted);
+  padding: 0.3em 1em 0.75em !important;
+  font-size: 0.9em !important;
+  line-height: 1.65 !important;
+  color: var(--text-muted) !important;
 }
 
 
@@ -144,23 +134,27 @@
      > Slowly · Unstoppably
    ─────────────────────────────────────────────────────────────── */
 .callout[data-callout="punchline"] {
-  border: none;
-  background: transparent;
+  border: none !important;
+  background: transparent !important;
   margin: 0.8em 0;
 }
 
-.callout[data-callout="punchline"] .callout-title { display: none; }
+.callout[data-callout="punchline"] .callout-title {
+  display: none !important;
+}
 
-.callout[data-callout="punchline"] .callout-content { padding: 0; }
+.callout[data-callout="punchline"] .callout-content {
+  padding: 0 !important;
+}
 
 .callout[data-callout="punchline"] .callout-content p {
-  font-family: var(--font-monospace-theme, monospace);
-  font-size: 0.72em;
-  letter-spacing: 0.22em;
-  color: var(--text-accent, #4d9fff);
-  text-transform: uppercase;
-  margin: 0;
-  font-weight: 700;
+  font-family: var(--font-monospace-theme, monospace) !important;
+  font-size: 0.72em !important;
+  letter-spacing: 0.22em !important;
+  color: var(--text-accent, #4d9fff) !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  margin: 0 !important;
 }
 
 
@@ -170,24 +164,28 @@
      > Supernova Remnant
    ─────────────────────────────────────────────────────────────── */
 .callout[data-callout="origin"] {
-  border: 1px solid rgba(var(--callout-color), 0.3);
-  background: transparent;
+  border: 1px solid rgba(29, 111, 255, 0.3) !important;
+  background: transparent !important;
+  margin: 0 0 0.8em;
   display: inline-block;
   width: auto;
-  margin: 0 0 0.8em;
 }
 
-.callout[data-callout="origin"] .callout-title { display: none; }
+.callout[data-callout="origin"] .callout-title {
+  display: none !important;
+}
 
-.callout[data-callout="origin"] .callout-content { padding: 0.2em 0.6em; }
+.callout[data-callout="origin"] .callout-content {
+  padding: 0.2em 0.6em !important;
+}
 
 .callout[data-callout="origin"] .callout-content p {
-  font-family: var(--font-monospace-theme, monospace);
-  font-size: 0.6em;
-  letter-spacing: 0.22em;
-  color: var(--text-faint);
-  text-transform: uppercase;
-  margin: 0;
+  font-family: var(--font-monospace-theme, monospace) !important;
+  font-size: 0.6em !important;
+  letter-spacing: 0.22em !important;
+  color: var(--text-faint) !important;
+  text-transform: uppercase !important;
+  margin: 0 !important;
 }
 
 
@@ -197,22 +195,26 @@
      > A Field Guide · Entry 02
    ─────────────────────────────────────────────────────────────── */
 .callout[data-callout="entry"] {
-  border: none;
-  background: transparent;
+  border: none !important;
+  background: transparent !important;
   margin: 0 0 0.4em;
 }
 
-.callout[data-callout="entry"] .callout-title { display: none; }
+.callout[data-callout="entry"] .callout-title {
+  display: none !important;
+}
 
-.callout[data-callout="entry"] .callout-content { padding: 0; }
+.callout[data-callout="entry"] .callout-content {
+  padding: 0 !important;
+}
 
 .callout[data-callout="entry"] .callout-content p {
-  font-family: var(--font-monospace-theme, monospace);
-  font-size: 0.52em;
-  letter-spacing: 0.2em;
-  color: var(--text-faint);
-  text-transform: uppercase;
-  margin: 0;
+  font-family: var(--font-monospace-theme, monospace) !important;
+  font-size: 0.52em !important;
+  letter-spacing: 0.2em !important;
+  color: var(--text-faint) !important;
+  text-transform: uppercase !important;
+  margin: 0 !important;
 }
 
 
@@ -222,10 +224,10 @@
      > Content here
    ─────────────────────────────────────────────────────────────── */
 .callout[data-callout="bracket"] {
-  border: none;
-  background: transparent;
+  border: none !important;
+  background: transparent !important;
   position: relative;
-  padding: 0.8em 1.2em;
+  padding: 0.8em 1.2em !important;
   margin: 1em 0;
 }
 
@@ -235,7 +237,7 @@
   position: absolute;
   width: 12px;
   height: 12px;
-  border-color: rgba(var(--callout-color), 0.4);
+  border-color: rgba(29, 111, 255, 0.4);
   border-style: solid;
 }
 
@@ -248,7 +250,7 @@
   position: absolute;
   width: 12px;
   height: 12px;
-  border-color: rgba(var(--callout-color), 0.4);
+  border-color: rgba(29, 111, 255, 0.4);
   border-style: solid;
 }
 
@@ -256,138 +258,141 @@
 .callout[data-callout="bracket"] .callout-content::after  { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
 
 .callout[data-callout="bracket"] .callout-title {
-  background: transparent;
-  padding: 0 0 0.5em;
+  background: transparent !important;
+  padding: 0 0 0.5em !important;
 }
 
 .callout[data-callout="bracket"] .callout-title-inner {
-  font-family: var(--font-monospace-theme, monospace);
-  font-size: 0.6em;
-  letter-spacing: 0.14em;
-  color: var(--text-faint);
-  text-transform: uppercase;
+  font-family: var(--font-monospace-theme, monospace) !important;
+  font-size: 0.6em !important;
+  letter-spacing: 0.14em !important;
+  color: var(--text-faint) !important;
+  text-transform: uppercase !important;
 }
 
-.callout[data-callout="bracket"] .callout-content { padding: 0; }
+.callout[data-callout="bracket"] .callout-content {
+  padding: 0 !important;
+}
 
 
-/* ── [!transition] ── NEW ────────────────────────────────────────
-   Scale-jump card between tiers.
+/* ── [!transition] ───────────────────────────────────────────────
    Usage:
      > [!transition] ×10¹⁹ · Ten Billion Billion Heavier
-     > **Tier 01** · Primordial · M ≤ 10¹² kg → **Tier 02** · Stellar-Mass · M ≈ 10³¹ kg
+     > Tier 01 · Primordial · M ≤ 10¹² kg → Tier 02 · Stellar-Mass
    ─────────────────────────────────────────────────────────────── */
 .callout[data-callout="transition"] {
-  border: 1px solid rgba(var(--callout-color), 0.12);
-  background: rgba(var(--callout-color), 0.03);
+  border: 1px solid rgba(29, 111, 255, 0.12) !important;
+  background: rgba(29, 111, 255, 0.03) !important;
   margin: 1.5em 0;
 }
 
 .callout[data-callout="transition"] .callout-title {
-  background: transparent;
-  padding: 0.8em 1.2em 0.4em;
+  background: transparent !important;
+  padding: 0.8em 1.2em 0.4em !important;
 }
 
 .callout[data-callout="transition"] .callout-title-inner {
-  font-family: var(--font-monospace-theme, monospace);
-  font-size: 1.4em;
-  font-weight: 700;
-  color: var(--text-accent, #4d9fff);
-  letter-spacing: -0.02em;
+  font-family: var(--font-monospace-theme, monospace) !important;
+  font-size: 1.4em !important;
+  font-weight: 700 !important;
+  color: var(--text-accent, #4d9fff) !important;
+  letter-spacing: -0.02em !important;
 }
 
 .callout[data-callout="transition"] .callout-content {
-  padding: 0.4em 1.2em 0.8em;
-  border-top: 1px solid rgba(var(--callout-color), 0.08);
+  padding: 0.4em 1.2em 0.8em !important;
+  border-top: 1px solid rgba(29, 111, 255, 0.08) !important;
 }
 
 .callout[data-callout="transition"] .callout-content p {
-  font-family: var(--font-monospace-theme, monospace);
-  font-size: 0.65em;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin: 0;
+  font-family: var(--font-monospace-theme, monospace) !important;
+  font-size: 0.65em !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: var(--text-muted) !important;
+  margin: 0 !important;
 }
 
 
-/* ── [!prose] ── NEW ─────────────────────────────────────────────
-   Caelum one-sentence-per-paragraph style.
+/* ── [!prose] ────────────────────────────────────────────────────
    Usage:
      > [!prose]
-     > There are roughly 100 million of them in the Milky Way alone.
+     > One sentence.
      >
      > Mostly invisible.
    ─────────────────────────────────────────────────────────────── */
 .callout[data-callout="prose"] {
-  border-left: 1px solid rgba(var(--callout-color), 0.12);
-  border-top: none;
-  border-right: none;
-  border-bottom: none;
-  background: transparent;
+  border-left: 1px solid rgba(29, 111, 255, 0.15) !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+  background: transparent !important;
   margin: 1em 0;
 }
 
-.callout[data-callout="prose"] .callout-title { display: none; }
+.callout[data-callout="prose"] .callout-title {
+  display: none !important;
+}
 
-.callout[data-callout="prose"] .callout-content { padding: 0 0 0 1em; }
+.callout[data-callout="prose"] .callout-content {
+  padding: 0 0 0 1em !important;
+}
 
 .callout[data-callout="prose"] .callout-content p {
-  font-size: 0.9em;
-  line-height: 1.5;
-  color: var(--text-muted);
-  margin-bottom: 0.4em;
+  font-size: 0.9em !important;
+  line-height: 1.5 !important;
+  color: var(--text-muted) !important;
+  margin-bottom: 0.4em !important;
 }
 
 .callout[data-callout="prose"] .callout-content p:last-child {
-  color: var(--text-faint);
-  font-size: 0.82em;
+  color: var(--text-faint) !important;
+  font-size: 0.82em !important;
 }
 
 
-/* ── [!horizon] ── NEW ───────────────────────────────────────────
-   Dashed event horizon ring indicator.
+/* ── [!horizon] ──────────────────────────────────────────────────
    Usage:
      > [!horizon] Event Horizon · r_s = 2GM/c²
    ─────────────────────────────────────────────────────────────── */
 .callout[data-callout="horizon"] {
-  border: none;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  gap: 0.8em;
+  border: none !important;
+  background: transparent !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.8em !important;
   margin: 0.8em 0;
-  padding: 0;
+  padding: 0 !important;
 }
 
 .callout[data-callout="horizon"]::before {
-  content: '';
-  display: block;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1px dashed rgba(var(--callout-color), 0.4);
-  box-shadow: inset 0 0 6px rgba(var(--callout-color), 0.15);
-  flex-shrink: 0;
+  content: '' !important;
+  display: block !important;
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  border-radius: 50% !important;
+  border: 1px dashed rgba(29, 111, 255, 0.4) !important;
+  box-shadow: inset 0 0 6px rgba(29, 111, 255, 0.15) !important;
 }
 
 .callout[data-callout="horizon"] .callout-title {
-  background: transparent;
-  padding: 0;
-  display: flex;
-  align-items: center;
+  background: transparent !important;
+  padding: 0 !important;
   flex: 1;
 }
 
 .callout[data-callout="horizon"] .callout-title-inner {
-  font-family: var(--font-monospace-theme, monospace);
-  font-size: 0.58em;
-  letter-spacing: 0.18em;
-  color: var(--text-faint);
-  text-transform: uppercase;
+  font-family: var(--font-monospace-theme, monospace) !important;
+  font-size: 0.58em !important;
+  letter-spacing: 0.18em !important;
+  color: var(--text-faint) !important;
+  text-transform: uppercase !important;
 }
 
-.callout[data-callout="horizon"] .callout-content { display: none; }
+.callout[data-callout="horizon"] .callout-content {
+  display: none !important;
+}
 
 
 /* ════════════════════════════════════════════════════════════════
