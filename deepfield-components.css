@@ -1,0 +1,297 @@
+/* ============================================================
+   DEEPFIELD COMPONENTS — Obsidian CSS Snippet
+   Custom UI elements from the Deepfield theme.
+
+   Install: copy to .obsidian/snippets/ and enable in
+   Settings → Appearance → CSS snippets.
+
+   Works with any theme. Deepfield theme users already have
+   these — don't enable both, you'll get conflicts.
+
+   Usage: add class via HTML in your markdown notes.
+   Example: <div class="deepfield-hud"><div class="deepfield-hud-bar"></div>
+            <div class="deepfield-hud-body">content</div></div>
+   ============================================================ */
+
+/* ── SNIPPET-LOCAL VARIABLES
+   Falls back gracefully on any theme.
+   Deepfield users: these are overridden by the main theme.
+   ─────────────────────────────────────────────────────────── */
+.deepfield-origin,
+.deepfield-attribution,
+.deepfield-attribution-meta,
+.deepfield-attribution-name,
+.deepfield-attribution-desc,
+.deepfield-punchline,
+.deepfield-hud,
+.deepfield-hud-bar,
+.deepfield-hud-body,
+.deepfield-bracket,
+.deepfield-bracket-inner,
+.deepfield-scan,
+.deepfield-scan-rule,
+.deepfield-led,
+.deepfield-bar,
+.deepfield-bar-label,
+.deepfield-bar-track,
+.deepfield-bar-fill,
+.deepfield-code-badge,
+.deepfield-coord,
+.deepfield-entry {
+  --df-accent:      var(--interactive-accent, #1d6fff);
+  --df-accent-hi:   var(--text-accent, #4d9fff);
+  --df-text:        var(--text-normal, #d4e4f7);
+  --df-text-muted:  var(--text-muted, #8aabcc);
+  --df-text-faint:  var(--text-faint, #3d607a);
+  --df-bg:          var(--background-primary, #020509);
+  --df-bg-2:        var(--background-secondary, #040a10);
+  --df-border:      var(--background-modifier-border, rgba(29,111,255,.1));
+  --df-mono:        var(--font-monospace-theme, monospace);
+  --df-warn:        #c07820;
+  --df-warn-hi:     #e09840;
+}
+
+/* ── Origin tag — "SUPERNOVA REMNANT" rectangular label ── */
+.deepfield-origin {
+  display: inline-block;
+  border: 1px solid rgba(29, 111, 255, 0.3);
+  font-family: var(--df-mono);
+  font-size: 0.6em;
+  letter-spacing: 0.22em;
+  color: var(--df-text-faint);
+  text-transform: uppercase;
+  padding: 0.2em 0.6em;
+  margin-bottom: 0.8em;
+}
+
+/* ── Entry designation — "A FIELD GUIDE · ENTRY 02" ── */
+.deepfield-entry {
+  font-family: var(--df-mono);
+  font-size: 0.52em;
+  letter-spacing: 0.2em;
+  color: var(--df-text-faint);
+  text-transform: uppercase;
+  margin-bottom: 0.4em;
+  display: block;
+}
+
+/* ── Coordinate label — "XY_0.53 258.6958" ── */
+.deepfield-coord {
+  font-family: var(--df-mono);
+  font-size: 0.6em;
+  letter-spacing: 0.14em;
+  color: var(--df-text-faint);
+  text-transform: uppercase;
+}
+
+.deepfield-coord span {
+  color: var(--df-text-muted);
+}
+
+/* ── Attribution block ── */
+.deepfield-attribution {
+  border-left: 2px solid var(--df-accent);
+  padding: 0.8em 1.2em;
+  margin: 1.5em 0;
+  background: rgba(29, 111, 255, 0.04);
+}
+
+.deepfield-attribution-meta {
+  font-family: var(--df-mono);
+  font-size: 0.6em;
+  letter-spacing: 0.2em;
+  color: var(--df-text-faint);
+  text-transform: uppercase;
+  margin-bottom: 0.3em;
+}
+
+.deepfield-attribution-name {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: var(--df-text);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.25em;
+}
+
+.deepfield-attribution-desc {
+  font-family: var(--df-mono);
+  font-size: 0.62em;
+  letter-spacing: 0.14em;
+  color: var(--df-text-muted);
+  text-transform: uppercase;
+}
+
+/* ── Punchline — "SLOWLY · UNSTOPPABLY" ── */
+.deepfield-punchline {
+  font-family: var(--df-mono);
+  font-size: 0.72em;
+  letter-spacing: 0.22em;
+  color: var(--df-accent-hi);
+  text-transform: uppercase;
+  margin: 1em 0;
+  display: block;
+}
+
+/* ── HUD panel — transparent bg + vertical left bar ── */
+.deepfield-hud {
+  display: flex;
+  margin: 1em 0;
+}
+
+.deepfield-hud-bar {
+  width: 3px;
+  background: var(--df-accent);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.deepfield-hud-body {
+  flex: 1;
+  padding: 0.75em 1em;
+  background: rgba(29, 111, 255, 0.04);
+  border: 1px solid rgba(29, 111, 255, 0.1);
+  border-left: none;
+  font-size: 0.9em;
+  line-height: 1.65;
+  color: var(--df-text-muted);
+}
+
+/* ── Corner bracket container ── */
+.deepfield-bracket {
+  position: relative;
+  padding: 1em 1.2em;
+  margin: 1em 0;
+}
+
+.deepfield-bracket::before,
+.deepfield-bracket::after,
+.deepfield-bracket-inner::before,
+.deepfield-bracket-inner::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: rgba(29, 111, 255, 0.4);
+  border-style: solid;
+}
+
+.deepfield-bracket::before  { top: 0; left: 0; border-width: 1px 0 0 1px; }
+.deepfield-bracket::after   { top: 0; right: 0; border-width: 1px 1px 0 0; }
+.deepfield-bracket-inner::before { bottom: 0; left: 0; border-width: 0 0 1px 1px; }
+.deepfield-bracket-inner::after  { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
+
+/* ── Scan line divider ── */
+.deepfield-scan {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin: 1.5em 0;
+}
+
+.deepfield-scan::before,
+.deepfield-scan::after {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  background: var(--df-accent);
+  flex-shrink: 0;
+}
+
+.deepfield-scan-rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(29,111,255,.5), transparent);
+}
+
+/* ── LED status indicator ── */
+.deepfield-led {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--df-text-faint);
+  background: transparent;
+  margin-right: 0.5em;
+  vertical-align: middle;
+}
+
+.deepfield-led.on {
+  background: var(--df-accent);
+  border-color: var(--df-accent-hi);
+  box-shadow: 0 0 4px var(--df-accent);
+}
+
+.deepfield-led.warn {
+  background: var(--df-warn);
+  border-color: var(--df-warn-hi);
+  box-shadow: 0 0 4px var(--df-warn);
+}
+
+/* ── HUD progress bar ── */
+.deepfield-bar {
+  margin: 0.6em 0;
+}
+
+.deepfield-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--df-mono);
+  font-size: 0.55em;
+  letter-spacing: 0.15em;
+  color: var(--df-text-faint);
+  text-transform: uppercase;
+  margin-bottom: 0.3em;
+}
+
+.deepfield-bar-track {
+  height: 3px;
+  background: rgba(29, 111, 255, 0.1);
+  position: relative;
+}
+
+.deepfield-bar-fill {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  background: var(--df-accent);
+}
+
+.deepfield-bar-fill::after {
+  content: '';
+  position: absolute;
+  right: -1px; top: -2px;
+  width: 1px; height: 7px;
+  background: var(--df-accent-hi);
+}
+
+/* ── Code badge — large isolated alphanumeric ── */
+.deepfield-code-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(29, 111, 255, 0.1);
+  border: 1px solid rgba(29, 111, 255, 0.25);
+  padding: 0.4em 0.8em;
+  margin-right: 0.5em;
+  vertical-align: middle;
+}
+
+.deepfield-code-badge-main {
+  font-family: var(--df-mono);
+  font-size: 1.4em;
+  font-weight: 700;
+  color: var(--df-accent-hi);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.deepfield-code-badge-sub {
+  font-family: var(--df-mono);
+  font-size: 0.45em;
+  letter-spacing: 0.18em;
+  color: var(--df-text-faint);
+  text-transform: uppercase;
+  margin-top: 0.2em;
+}
