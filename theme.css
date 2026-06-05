@@ -312,6 +312,72 @@ body.theme-dark blockquote {
   margin: 1em 0;
 }
 
+/* ── HIGHLIGHT — accent-tinted instead of default yellow ── */
+body.theme-dark mark,
+body.theme-dark .markdown-rendered mark {
+  background: rgba(var(--interactive-accent-rgb, 29,111,255), 0.2);
+  color: var(--text-accent);
+  border-radius: 0;
+  padding: 0.05em 0.15em;
+}
+
+/* ── FOOTNOTES ── */
+body.theme-dark .footnotes {
+  border-top: 1px solid rgba(29,111,255,.08);
+  margin-top: 2em;
+  padding-top: 1em;
+  font-size: 0.78em;
+  color: var(--text-faint);
+}
+
+body.theme-dark .footnote-ref a,
+body.theme-dark .footnotes a {
+  font-family: var(--font-monospace-theme);
+  font-size: 0.85em;
+  color: var(--text-accent);
+}
+
+/* ── CALLOUT FOLD ARROW ── */
+body.theme-dark .callout-fold {
+  color: var(--text-faint) !important;
+  opacity: 0.5;
+}
+
+/* ── CUSTOM CHECKBOX STATES ── */
+body.theme-dark .task-list-item[data-task="/"] input[type=checkbox],
+body.theme-dark .task-list-item[data-task="/"] > input {
+  --checkbox-color: rgba(192, 120, 32, 0.2);
+  --checkbox-border-color: #c07820;
+  --checkbox-marker-color: #e09840;
+}
+
+body.theme-dark .task-list-item[data-task="-"] input[type=checkbox],
+body.theme-dark .task-list-item[data-task="-"] > input {
+  --checkbox-color: rgba(61, 60, 60, 0.2);
+  --checkbox-border-color: var(--text-faint);
+  --checkbox-marker-color: var(--text-faint);
+}
+
+body.theme-dark .task-list-item[data-task=">"] input[type=checkbox],
+body.theme-dark .task-list-item[data-task=">"] > input {
+  --checkbox-color: rgba(155, 125, 255, 0.2);
+  --checkbox-border-color: #9b7dff;
+  --checkbox-marker-color: #9b7dff;
+}
+
+body.theme-dark .task-list-item[data-task="!"] input[type=checkbox],
+body.theme-dark .task-list-item[data-task="!"] > input {
+  --checkbox-color: rgba(224, 96, 96, 0.2);
+  --checkbox-border-color: #e06060;
+  --checkbox-marker-color: #e06060;
+}
+
+/* Text styling per state */
+body.theme-dark .task-list-item[data-task="-"] { color: var(--text-faint); text-decoration: line-through; }
+body.theme-dark .task-list-item[data-task=">"] { color: var(--text-muted); }
+body.theme-dark .task-list-item[data-task="!"] { color: var(--text-normal); }
+body.theme-dark .task-list-item[data-task="/"] { color: var(--text-muted); }
+
 /* ── INLINE CODE ── */
 body.theme-dark code {
   background: rgba(4, 10, 16, 0.9);

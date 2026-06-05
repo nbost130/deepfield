@@ -529,6 +529,53 @@
   box-shadow: 0 0 4px #c07820;
 }
 
+/* ── Tier table ── */
+.deepfield-tier-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 4px;
+  margin: 1em 0;
+}
+
+.deepfield-tier-table tr {
+  background: rgba(29,111,255,.04);
+  border: 1px solid rgba(29,111,255,.1);
+}
+
+.deepfield-tier-table td {
+  padding: 0.7em 1em;
+  vertical-align: middle;
+  border: none;
+}
+
+.deepfield-tier-table td:first-child {
+  font-family: var(--font-monospace-theme, monospace);
+  font-size: 0.7em;
+  color: var(--text-faint, #3d607a);
+  letter-spacing: 0.1em;
+  width: 3em;
+  text-align: center;
+}
+
+.deepfield-tier-table td:nth-child(2) {
+  font-weight: 600;
+  color: var(--text-normal, #d4e4f7);
+  font-size: 0.95em;
+}
+
+.deepfield-tier-table td:nth-child(3) {
+  font-family: var(--font-monospace-theme, monospace);
+  font-size: 0.7em;
+  color: var(--text-muted, #8aabcc);
+  letter-spacing: 0.05em;
+}
+
+.deepfield-tier-table .tier-confirmed  { color: #3dc9a0; font-family: var(--font-monospace-theme, monospace); font-size: 0.7em; letter-spacing: 0.1em; }
+.deepfield-tier-table .tier-imaged     { color: var(--text-accent, #4d9fff); font-family: var(--font-monospace-theme, monospace); font-size: 0.7em; letter-spacing: 0.1em; }
+.deepfield-tier-table .tier-theory     { color: var(--text-faint, #3d607a); font-family: var(--font-monospace-theme, monospace); font-size: 0.7em; letter-spacing: 0.1em; }
+.deepfield-tier-table .tier-partial    { color: #c07820; font-family: var(--font-monospace-theme, monospace); font-size: 0.7em; letter-spacing: 0.1em; }
+.deepfield-tier-table .tier-unknown    { color: var(--text-faint, #3d607a); font-family: var(--font-monospace-theme, monospace); font-size: 0.7em; letter-spacing: 0.1em; opacity: 0.6; }
+
 .deepfield-scan {
   display: flex;
   align-items: center;
