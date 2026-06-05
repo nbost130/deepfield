@@ -140,8 +140,8 @@
 
 .callout[data-callout="hud"] .callout-title-inner {
   font-family: var(--font-monospace-theme, monospace) !important;
-  font-size: 0.66em !important;
-  letter-spacing: 0.16em !important;
+  font-size: 0.78em !important;
+  letter-spacing: 0.14em !important;
   color: var(--text-faint) !important;
   text-transform: uppercase !important;
 }
@@ -290,7 +290,7 @@
 
 .callout[data-callout="bracket"] .callout-title-inner {
   font-family: var(--font-monospace-theme, monospace) !important;
-  font-size: 0.66em !important;
+  font-size: 0.78em !important;
   letter-spacing: 0.14em !important;
   color: var(--text-faint) !important;
   text-transform: uppercase !important;
@@ -333,23 +333,24 @@
 /* First line — subtitle "Ten billion billion heavier" */
 .callout[data-callout="transition"] .callout-content p:first-of-type {
   font-family: var(--font-monospace-theme, monospace) !important;
-  font-size: 0.6em !important;
-  letter-spacing: 0.18em !important;
+  font-size: 0.7em !important;
+  letter-spacing: 0.16em !important;
   text-transform: uppercase !important;
   color: var(--text-faint) !important;
   font-weight: 400 !important;
-  margin: 0 0 0.4em !important;
+  margin: 0 0 0.5em !important;
 }
 
 /* Second line — tier range info */
 .callout[data-callout="transition"] .callout-content p + p {
   font-family: var(--font-monospace-theme, monospace) !important;
-  font-size: 0.58em !important;
-  letter-spacing: 0.1em !important;
+  font-size: 0.68em !important;
+  letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
   color: var(--text-muted) !important;
   font-weight: 400 !important;
   margin: 0 !important;
+  line-height: 1.6 !important;
 }
 
 
@@ -423,7 +424,7 @@
 
 .callout[data-callout="horizon"] .callout-title-inner {
   font-family: var(--font-monospace-theme, monospace) !important;
-  font-size: 0.58em !important;
+  font-size: 0.72em !important;
   letter-spacing: 0.18em !important;
   color: var(--text-faint) !important;
   text-transform: uppercase !important;
