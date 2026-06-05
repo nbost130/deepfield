@@ -384,47 +384,92 @@ body.theme-dark .callout-fold {
   opacity: 0.5;
 }
 
-/* ── CUSTOM CHECKBOX STATES — direct bg/border for reliable override ── */
-/* [x] completed — accent glow */
+/* ── CUSTOM CHECKBOX STATES (Minimal-style mask technique) ──
+   Obsidian renders any non-space char in [ ] as a CHECKED checkbox
+   with data-task="<char>". We replace the glyph via mask-image so
+   each state shows its own symbol instead of a checkmark. ── */
+
+/* Base reset: convert mask-state checkboxes to currentColor fill + mask */
+body.theme-dark input[data-task="-"]:checked,
+body.theme-dark input[data-task=">"]:checked,
+body.theme-dark input[data-task="!"]:checked,
+body.theme-dark li[data-task="-"] > input:checked,
+body.theme-dark li[data-task="-"] > p > input:checked,
+body.theme-dark li[data-task=">"] > input:checked,
+body.theme-dark li[data-task=">"] > p > input:checked,
+body.theme-dark li[data-task="!"] > input:checked,
+body.theme-dark li[data-task="!"] > p > input:checked {
+  border: none !important;
+  border-radius: 0 !important;
+  background-image: none !important;
+  background-color: currentColor !important;
+  box-shadow: none !important;
+  -webkit-mask-size: contain;
+  -webkit-mask-position: 50% 50%;
+  -webkit-mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: 50% 50%;
+  mask-repeat: no-repeat;
+}
+
+/* [x] completed — accent fill + glow (default checkmark kept) */
 body.theme-dark input[data-task="x"]:checked,
 body.theme-dark input[data-task="X"]:checked,
 body.theme-dark li[data-task="x"] > input:checked,
 body.theme-dark li[data-task="X"] > input:checked {
-  background-color: rgba(var(--interactive-accent-rgb, 29,111,255), 0.2) !important;
+  background-color: rgba(var(--interactive-accent-rgb, 29,111,255), 0.25) !important;
   border-color: var(--text-accent) !important;
   box-shadow: 0 0 6px rgba(var(--interactive-accent-rgb, 29,111,255), 0.4) !important;
 }
 
-/* [/] in progress — amber */
-body.theme-dark input[data-task="/"],
-body.theme-dark li[data-task="/"] > input {
-  background-color: rgba(192, 120, 32, 0.2) !important;
-  border-color: #c07820 !important;
-  box-shadow: 0 0 6px rgba(192, 120, 32, 0.35) !important;
-}
-
-/* [-] cancelled — grey */
-body.theme-dark input[data-task="-"],
-body.theme-dark li[data-task="-"] > input {
-  background-color: rgba(100, 100, 100, 0.15) !important;
-  border-color: var(--text-faint) !important;
+/* [/] in progress — half-filled box (no mask, pseudo-element) */
+body.theme-dark input[data-task="/"]:checked,
+body.theme-dark li[data-task="/"] > input:checked,
+body.theme-dark li[data-task="/"] > p > input:checked {
+  background-image: none !important;
+  background-color: transparent !important;
+  border: 1px solid #c07820 !important;
   box-shadow: none !important;
+  position: relative;
+  overflow: hidden;
+}
+body.theme-dark input[data-task="/"]:checked::after,
+body.theme-dark li[data-task="/"] > input:checked::after,
+body.theme-dark li[data-task="/"] > p > input:checked::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: calc(50% - 0.5px);
+  height: 100%;
+  background-color: #c07820;
 }
 
-/* [>] deferred — purple */
-body.theme-dark input[data-task=">"],
-body.theme-dark li[data-task=">"] > input {
-  background-color: rgba(155, 125, 255, 0.2) !important;
-  border-color: #9b7dff !important;
-  box-shadow: 0 0 6px rgba(155, 125, 255, 0.35) !important;
+/* [-] cancelled — minus icon, muted */
+body.theme-dark input[data-task="-"]:checked,
+body.theme-dark li[data-task="-"] > input:checked,
+body.theme-dark li[data-task="-"] > p > input:checked {
+  color: var(--text-faint);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z' clip-rule='evenodd' /%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z' clip-rule='evenodd' /%3E%3C/svg%3E");
 }
 
-/* [!] important — red */
-body.theme-dark input[data-task="!"],
-body.theme-dark li[data-task="!"] > input {
-  background-color: rgba(224, 96, 96, 0.2) !important;
-  border-color: #e06060 !important;
-  box-shadow: 0 0 6px rgba(224, 96, 96, 0.35) !important;
+/* [>] deferred — arrow, purple */
+body.theme-dark input[data-task=">"]:checked,
+body.theme-dark li[data-task=">"] > input:checked,
+body.theme-dark li[data-task=">"] > p > input:checked {
+  color: #9b7dff;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z' clip-rule='evenodd' /%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z' clip-rule='evenodd' /%3E%3C/svg%3E");
+}
+
+/* [!] important — triangle, red */
+body.theme-dark input[data-task="!"]:checked,
+body.theme-dark li[data-task="!"] > input:checked,
+body.theme-dark li[data-task="!"] > p > input:checked {
+  color: #e06060;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z' clip-rule='evenodd' /%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z' clip-rule='evenodd' /%3E%3C/svg%3E");
 }
 
 /* Text styling per state */
