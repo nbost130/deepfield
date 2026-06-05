@@ -55,15 +55,17 @@ The 8 planet themes are derived from real astronomical spectral data — each ac
 
 Copy `deepfield-components.css` to your vault's `.obsidian/snippets/` folder and enable it in **Settings → Appearance → CSS Snippets**.
 
-This snippet adds custom HTML elements you can use in your notes:
+This snippet adds custom elements you can use in your notes.
 
-```html
-<!-- Attribution block -->
-<div class="deepfield-attribution">
-  <div class="deepfield-attribution-meta">Proof · Cambridge · 1974</div>
-  <div class="deepfield-attribution-name">Stephen Hawking</div>
-  <div class="deepfield-attribution-desc">Every black hole leaks energy. Slowly · Unstoppably</div>
-</div>
+**Important:** For callouts with two distinct content blocks (attribution name vs descriptor), use a blank `>` line to create separate paragraphs:
+
+```markdown
+<!-- Attribution block — blank > line separates name from descriptor -->
+> [!attribution] Proof · Cambridge · 1974
+> Stephen Hawking
+>
+> Every black hole leaks energy. Slowly · Unstoppably
+```
 
 <!-- HUD panel -->
 <div class="deepfield-hud">

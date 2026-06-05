@@ -61,7 +61,8 @@ A [[wikilink]] and an [[wikilink|aliased display name]] and an [external link](h
 > A Field Guide · Entry 02
 
 > [!attribution] Proof · Cambridge · 1974
-> **Stephen Hawking**
+> Stephen Hawking
+>
 > Every black hole leaks energy at its outer edge. Slowly · Unstoppably
 
 > [!punchline]
