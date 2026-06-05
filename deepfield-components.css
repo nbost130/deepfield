@@ -2,296 +2,500 @@
    DEEPFIELD COMPONENTS — Obsidian CSS Snippet
    Custom UI elements from the Deepfield theme.
 
+   Block elements use native Obsidian callout syntax.
+   Inline elements use CSS classes.
+
    Install: copy to .obsidian/snippets/ and enable in
-   Settings → Appearance → CSS snippets.
+   Settings → Appearance → CSS Snippets.
 
-   Works with any theme. Deepfield theme users already have
-   these — don't enable both, you'll get conflicts.
-
-   Usage: add class via HTML in your markdown notes.
-   Example: <div class="deepfield-hud"><div class="deepfield-hud-bar"></div>
-            <div class="deepfield-hud-body">content</div></div>
+   Works with any theme — falls back to Obsidian accent colors.
    ============================================================ */
 
-/* ── SNIPPET-LOCAL VARIABLES
-   Falls back gracefully on any theme.
-   Deepfield users: these are overridden by the main theme.
-   ─────────────────────────────────────────────────────────── */
-.deepfield-origin,
-.deepfield-attribution,
-.deepfield-attribution-meta,
-.deepfield-attribution-name,
-.deepfield-attribution-desc,
-.deepfield-punchline,
-.deepfield-hud,
-.deepfield-hud-bar,
-.deepfield-hud-body,
-.deepfield-bracket,
-.deepfield-bracket-inner,
-.deepfield-scan,
-.deepfield-scan-rule,
-.deepfield-led,
-.deepfield-bar,
-.deepfield-bar-label,
-.deepfield-bar-track,
-.deepfield-bar-fill,
-.deepfield-code-badge,
-.deepfield-coord,
-.deepfield-entry {
-  --df-accent:      var(--interactive-accent, #1d6fff);
-  --df-accent-hi:   var(--text-accent, #4d9fff);
-  --df-text:        var(--text-normal, #d4e4f7);
-  --df-text-muted:  var(--text-muted, #8aabcc);
-  --df-text-faint:  var(--text-faint, #3d607a);
-  --df-bg:          var(--background-primary, #020509);
-  --df-bg-2:        var(--background-secondary, #040a10);
-  --df-border:      var(--background-modifier-border, rgba(29,111,255,.1));
-  --df-mono:        var(--font-monospace-theme, monospace);
-  --df-warn:        #c07820;
-  --df-warn-hi:     #e09840;
+/* ── SHARED: suppress default callout chrome ────────────────── */
+.callout[data-callout="attribution"],
+.callout[data-callout="hud"],
+.callout[data-callout="punchline"],
+.callout[data-callout="origin"],
+.callout[data-callout="entry"],
+.callout[data-callout="bracket"],
+.callout[data-callout="transition"],
+.callout[data-callout="prose"],
+.callout[data-callout="horizon"] {
+  --callout-color: var(--interactive-accent-rgb, 29, 111, 255);
+  border-radius: 0;
+  padding: 0;
 }
 
-/* ── Origin tag — "SUPERNOVA REMNANT" rectangular label ── */
-.deepfield-origin {
-  display: inline-block;
-  border: 1px solid rgba(29, 111, 255, 0.3);
-  font-family: var(--df-mono);
-  font-size: 0.6em;
-  letter-spacing: 0.22em;
-  color: var(--df-text-faint);
-  text-transform: uppercase;
-  padding: 0.2em 0.6em;
-  margin-bottom: 0.8em;
+.callout[data-callout="attribution"] .callout-title-icon,
+.callout[data-callout="hud"] .callout-title-icon,
+.callout[data-callout="punchline"] .callout-title-icon,
+.callout[data-callout="origin"] .callout-title-icon,
+.callout[data-callout="entry"] .callout-title-icon,
+.callout[data-callout="bracket"] .callout-title-icon,
+.callout[data-callout="transition"] .callout-title-icon,
+.callout[data-callout="prose"] .callout-title-icon,
+.callout[data-callout="horizon"] .callout-title-icon {
+  display: none;
 }
 
-/* ── Entry designation — "A FIELD GUIDE · ENTRY 02" ── */
-.deepfield-entry {
-  font-family: var(--df-mono);
-  font-size: 0.52em;
-  letter-spacing: 0.2em;
-  color: var(--df-text-faint);
-  text-transform: uppercase;
-  margin-bottom: 0.4em;
-  display: block;
+
+/* ── [!attribution] ─────────────────────────────────────────────
+   Usage:
+     > [!attribution] Proof · Cambridge · 1974
+     > **Stephen Hawking**
+     > Every black hole leaks energy. Slowly · Unstoppably
+   ─────────────────────────────────────────────────────────────── */
+.callout[data-callout="attribution"] {
+  border-left: 2px solid var(--interactive-accent, #1d6fff);
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  background: rgba(var(--callout-color), 0.04);
+  margin: 1.2em 0;
 }
 
-/* ── Coordinate label — "XY_0.53 258.6958" ── */
-.deepfield-coord {
-  font-family: var(--df-mono);
-  font-size: 0.6em;
-  letter-spacing: 0.14em;
-  color: var(--df-text-faint);
-  text-transform: uppercase;
-}
-
-.deepfield-coord span {
-  color: var(--df-text-muted);
-}
-
-/* ── Attribution block ── */
-.deepfield-attribution {
-  border-left: 2px solid var(--df-accent);
-  padding: 0.8em 1.2em;
-  margin: 1.5em 0;
-  background: rgba(29, 111, 255, 0.04);
-}
-
-.deepfield-attribution-meta {
-  font-family: var(--df-mono);
+.callout[data-callout="attribution"] .callout-title {
+  font-family: var(--font-monospace-theme, monospace);
   font-size: 0.6em;
   letter-spacing: 0.2em;
-  color: var(--df-text-faint);
   text-transform: uppercase;
-  margin-bottom: 0.3em;
+  color: var(--text-faint);
+  background: transparent;
+  padding: 0.7em 1em 0.2em;
+  font-weight: 400;
 }
 
-.deepfield-attribution-name {
-  font-size: 1.1em;
+.callout[data-callout="attribution"] .callout-content {
+  padding: 0 1em 0.8em;
+}
+
+.callout[data-callout="attribution"] .callout-content p:first-child {
+  font-size: 1.05em;
   font-weight: 700;
-  color: var(--df-text);
+  color: var(--text-normal);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  margin-bottom: 0.25em;
+  margin-bottom: 0.2em;
 }
 
-.deepfield-attribution-desc {
-  font-family: var(--df-mono);
+.callout[data-callout="attribution"] .callout-content p:not(:first-child) {
+  font-family: var(--font-monospace-theme, monospace);
   font-size: 0.62em;
   letter-spacing: 0.14em;
-  color: var(--df-text-muted);
+  color: var(--text-muted);
   text-transform: uppercase;
+  margin: 0;
 }
 
-/* ── Punchline — "SLOWLY · UNSTOPPABLY" ── */
-.deepfield-punchline {
-  font-family: var(--df-mono);
-  font-size: 0.72em;
-  letter-spacing: 0.22em;
-  color: var(--df-accent-hi);
-  text-transform: uppercase;
-  margin: 1em 0;
-  display: block;
-}
 
-/* ── HUD panel — transparent bg + vertical left bar ── */
-.deepfield-hud {
+/* ── [!hud] ──────────────────────────────────────────────────────
+   Usage:
+     > [!hud] TIER_07 · COSMIC_HORIZON_CLASS
+     > We do not have the words yet.
+   ─────────────────────────────────────────────────────────────── */
+.callout[data-callout="hud"] {
   display: flex;
+  border: none;
+  background: transparent;
   margin: 1em 0;
 }
 
-.deepfield-hud-bar {
+.callout[data-callout="hud"]::before {
+  content: '';
+  display: block;
   width: 3px;
-  background: var(--df-accent);
+  background: var(--interactive-accent, #1d6fff);
   opacity: 0.6;
   flex-shrink: 0;
+  align-self: stretch;
 }
 
-.deepfield-hud-body {
+.callout[data-callout="hud"] .callout-title {
+  display: block;
+  background: transparent;
+  padding: 0;
+}
+
+.callout[data-callout="hud"] .callout-title-inner {
+  display: block;
+  font-family: var(--font-monospace-theme, monospace);
+  font-size: 0.58em;
+  letter-spacing: 0.16em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  padding: 0.6em 1em 0;
+}
+
+.callout[data-callout="hud"] .callout-content {
   flex: 1;
-  padding: 0.75em 1em;
-  background: rgba(29, 111, 255, 0.04);
-  border: 1px solid rgba(29, 111, 255, 0.1);
+  padding: 0.4em 1em 0.75em;
+  background: rgba(var(--callout-color), 0.04);
+  border: 1px solid rgba(var(--callout-color), 0.1);
   border-left: none;
   font-size: 0.9em;
   line-height: 1.65;
-  color: var(--df-text-muted);
+  color: var(--text-muted);
 }
 
-/* ── Corner bracket container ── */
-.deepfield-bracket {
+
+/* ── [!punchline] ────────────────────────────────────────────────
+   Usage:
+     > [!punchline]
+     > Slowly · Unstoppably
+   ─────────────────────────────────────────────────────────────── */
+.callout[data-callout="punchline"] {
+  border: none;
+  background: transparent;
+  margin: 0.8em 0;
+}
+
+.callout[data-callout="punchline"] .callout-title { display: none; }
+
+.callout[data-callout="punchline"] .callout-content { padding: 0; }
+
+.callout[data-callout="punchline"] .callout-content p {
+  font-family: var(--font-monospace-theme, monospace);
+  font-size: 0.72em;
+  letter-spacing: 0.22em;
+  color: var(--text-accent, #4d9fff);
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: 700;
+}
+
+
+/* ── [!origin] ───────────────────────────────────────────────────
+   Usage:
+     > [!origin]
+     > Supernova Remnant
+   ─────────────────────────────────────────────────────────────── */
+.callout[data-callout="origin"] {
+  border: 1px solid rgba(var(--callout-color), 0.3);
+  background: transparent;
+  display: inline-block;
+  width: auto;
+  margin: 0 0 0.8em;
+}
+
+.callout[data-callout="origin"] .callout-title { display: none; }
+
+.callout[data-callout="origin"] .callout-content { padding: 0.2em 0.6em; }
+
+.callout[data-callout="origin"] .callout-content p {
+  font-family: var(--font-monospace-theme, monospace);
+  font-size: 0.6em;
+  letter-spacing: 0.22em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+
+/* ── [!entry] ────────────────────────────────────────────────────
+   Usage:
+     > [!entry]
+     > A Field Guide · Entry 02
+   ─────────────────────────────────────────────────────────────── */
+.callout[data-callout="entry"] {
+  border: none;
+  background: transparent;
+  margin: 0 0 0.4em;
+}
+
+.callout[data-callout="entry"] .callout-title { display: none; }
+
+.callout[data-callout="entry"] .callout-content { padding: 0; }
+
+.callout[data-callout="entry"] .callout-content p {
+  font-family: var(--font-monospace-theme, monospace);
+  font-size: 0.52em;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+
+/* ── [!bracket] ──────────────────────────────────────────────────
+   Usage:
+     > [!bracket] XY_0.53 · 258.6958 · TIER_02
+     > Content here
+   ─────────────────────────────────────────────────────────────── */
+.callout[data-callout="bracket"] {
+  border: none;
+  background: transparent;
   position: relative;
-  padding: 1em 1.2em;
+  padding: 0.8em 1.2em;
   margin: 1em 0;
 }
 
-.deepfield-bracket::before,
-.deepfield-bracket::after,
-.deepfield-bracket-inner::before,
-.deepfield-bracket-inner::after {
+.callout[data-callout="bracket"]::before,
+.callout[data-callout="bracket"]::after {
   content: '';
   position: absolute;
   width: 12px;
   height: 12px;
-  border-color: rgba(29, 111, 255, 0.4);
+  border-color: rgba(var(--callout-color), 0.4);
   border-style: solid;
 }
 
-.deepfield-bracket::before  { top: 0; left: 0; border-width: 1px 0 0 1px; }
-.deepfield-bracket::after   { top: 0; right: 0; border-width: 1px 1px 0 0; }
-.deepfield-bracket-inner::before { bottom: 0; left: 0; border-width: 0 0 1px 1px; }
-.deepfield-bracket-inner::after  { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
+.callout[data-callout="bracket"]::before { top: 0; left: 0; border-width: 1px 0 0 1px; }
+.callout[data-callout="bracket"]::after  { top: 0; right: 0; border-width: 1px 1px 0 0; }
 
-/* ── Scan line divider ── */
+.callout[data-callout="bracket"] .callout-content::before,
+.callout[data-callout="bracket"] .callout-content::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: rgba(var(--callout-color), 0.4);
+  border-style: solid;
+}
+
+.callout[data-callout="bracket"] .callout-content::before { bottom: 0; left: 0; border-width: 0 0 1px 1px; }
+.callout[data-callout="bracket"] .callout-content::after  { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
+
+.callout[data-callout="bracket"] .callout-title {
+  background: transparent;
+  padding: 0 0 0.5em;
+}
+
+.callout[data-callout="bracket"] .callout-title-inner {
+  font-family: var(--font-monospace-theme, monospace);
+  font-size: 0.6em;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+
+.callout[data-callout="bracket"] .callout-content { padding: 0; }
+
+
+/* ── [!transition] ── NEW ────────────────────────────────────────
+   Scale-jump card between tiers.
+   Usage:
+     > [!transition] ×10¹⁹ · Ten Billion Billion Heavier
+     > **Tier 01** · Primordial · M ≤ 10¹² kg → **Tier 02** · Stellar-Mass · M ≈ 10³¹ kg
+   ─────────────────────────────────────────────────────────────── */
+.callout[data-callout="transition"] {
+  border: 1px solid rgba(var(--callout-color), 0.12);
+  background: rgba(var(--callout-color), 0.03);
+  margin: 1.5em 0;
+}
+
+.callout[data-callout="transition"] .callout-title {
+  background: transparent;
+  padding: 0.8em 1.2em 0.4em;
+}
+
+.callout[data-callout="transition"] .callout-title-inner {
+  font-family: var(--font-monospace-theme, monospace);
+  font-size: 1.4em;
+  font-weight: 700;
+  color: var(--text-accent, #4d9fff);
+  letter-spacing: -0.02em;
+}
+
+.callout[data-callout="transition"] .callout-content {
+  padding: 0.4em 1.2em 0.8em;
+  border-top: 1px solid rgba(var(--callout-color), 0.08);
+}
+
+.callout[data-callout="transition"] .callout-content p {
+  font-family: var(--font-monospace-theme, monospace);
+  font-size: 0.65em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+
+/* ── [!prose] ── NEW ─────────────────────────────────────────────
+   Caelum one-sentence-per-paragraph style.
+   Usage:
+     > [!prose]
+     > There are roughly 100 million of them in the Milky Way alone.
+     >
+     > Mostly invisible.
+   ─────────────────────────────────────────────────────────────── */
+.callout[data-callout="prose"] {
+  border-left: 1px solid rgba(var(--callout-color), 0.12);
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  background: transparent;
+  margin: 1em 0;
+}
+
+.callout[data-callout="prose"] .callout-title { display: none; }
+
+.callout[data-callout="prose"] .callout-content { padding: 0 0 0 1em; }
+
+.callout[data-callout="prose"] .callout-content p {
+  font-size: 0.9em;
+  line-height: 1.5;
+  color: var(--text-muted);
+  margin-bottom: 0.4em;
+}
+
+.callout[data-callout="prose"] .callout-content p:last-child {
+  color: var(--text-faint);
+  font-size: 0.82em;
+}
+
+
+/* ── [!horizon] ── NEW ───────────────────────────────────────────
+   Dashed event horizon ring indicator.
+   Usage:
+     > [!horizon] Event Horizon · r_s = 2GM/c²
+   ─────────────────────────────────────────────────────────────── */
+.callout[data-callout="horizon"] {
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  margin: 0.8em 0;
+  padding: 0;
+}
+
+.callout[data-callout="horizon"]::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px dashed rgba(var(--callout-color), 0.4);
+  box-shadow: inset 0 0 6px rgba(var(--callout-color), 0.15);
+  flex-shrink: 0;
+}
+
+.callout[data-callout="horizon"] .callout-title {
+  background: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.callout[data-callout="horizon"] .callout-title-inner {
+  font-family: var(--font-monospace-theme, monospace);
+  font-size: 0.58em;
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+
+.callout[data-callout="horizon"] .callout-content { display: none; }
+
+
+/* ════════════════════════════════════════════════════════════════
+   INLINE COMPONENTS — use inside HTML blocks in notes
+   ════════════════════════════════════════════════════════════════ */
+
+.deepfield-led {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--text-faint, #3d607a);
+  background: transparent;
+  margin-right: 0.5em;
+  vertical-align: middle;
+}
+.deepfield-led.on {
+  background: var(--interactive-accent, #1d6fff);
+  border-color: var(--text-accent, #4d9fff);
+  box-shadow: 0 0 4px var(--interactive-accent, #1d6fff);
+}
+.deepfield-led.warn {
+  background: #c07820;
+  border-color: #e09840;
+  box-shadow: 0 0 4px #c07820;
+}
+
 .deepfield-scan {
   display: flex;
   align-items: center;
   gap: 0.5em;
   margin: 1.5em 0;
 }
-
 .deepfield-scan::before,
 .deepfield-scan::after {
   content: '';
   display: block;
-  width: 5px;
-  height: 5px;
-  background: var(--df-accent);
+  width: 5px; height: 5px;
+  background: var(--interactive-accent, #1d6fff);
   flex-shrink: 0;
 }
-
 .deepfield-scan-rule {
   flex: 1;
   height: 1px;
   background: linear-gradient(to right, rgba(29,111,255,.5), transparent);
 }
 
-/* ── LED status indicator ── */
-.deepfield-led {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: 1px solid var(--df-text-faint);
-  background: transparent;
-  margin-right: 0.5em;
-  vertical-align: middle;
+.deepfield-coord {
+  font-family: var(--font-monospace-theme, monospace);
+  font-size: 0.6em;
+  letter-spacing: 0.14em;
+  color: var(--text-faint, #3d607a);
+  text-transform: uppercase;
 }
+.deepfield-coord span { color: var(--text-muted, #8aabcc); }
 
-.deepfield-led.on {
-  background: var(--df-accent);
-  border-color: var(--df-accent-hi);
-  box-shadow: 0 0 4px var(--df-accent);
-}
-
-.deepfield-led.warn {
-  background: var(--df-warn);
-  border-color: var(--df-warn-hi);
-  box-shadow: 0 0 4px var(--df-warn);
-}
-
-/* ── HUD progress bar ── */
-.deepfield-bar {
-  margin: 0.6em 0;
-}
-
+.deepfield-bar { margin: 0.6em 0; }
 .deepfield-bar-label {
   display: flex;
   justify-content: space-between;
-  font-family: var(--df-mono);
+  font-family: var(--font-monospace-theme, monospace);
   font-size: 0.55em;
   letter-spacing: 0.15em;
-  color: var(--df-text-faint);
+  color: var(--text-faint, #3d607a);
   text-transform: uppercase;
   margin-bottom: 0.3em;
 }
-
 .deepfield-bar-track {
   height: 3px;
-  background: rgba(29, 111, 255, 0.1);
+  background: rgba(29,111,255,.1);
   position: relative;
 }
-
 .deepfield-bar-fill {
   position: absolute;
   top: 0; left: 0; bottom: 0;
-  background: var(--df-accent);
+  background: var(--interactive-accent, #1d6fff);
 }
-
 .deepfield-bar-fill::after {
   content: '';
   position: absolute;
   right: -1px; top: -2px;
   width: 1px; height: 7px;
-  background: var(--df-accent-hi);
+  background: var(--text-accent, #4d9fff);
 }
 
-/* ── Code badge — large isolated alphanumeric ── */
 .deepfield-code-badge {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(29, 111, 255, 0.1);
-  border: 1px solid rgba(29, 111, 255, 0.25);
+  background: rgba(29,111,255,.1);
+  border: 1px solid rgba(29,111,255,.25);
   padding: 0.4em 0.8em;
   margin-right: 0.5em;
   vertical-align: middle;
 }
-
 .deepfield-code-badge-main {
-  font-family: var(--df-mono);
+  font-family: var(--font-monospace-theme, monospace);
   font-size: 1.4em;
   font-weight: 700;
-  color: var(--df-accent-hi);
+  color: var(--text-accent, #4d9fff);
   line-height: 1;
   letter-spacing: -0.02em;
 }
-
 .deepfield-code-badge-sub {
-  font-family: var(--df-mono);
+  font-family: var(--font-monospace-theme, monospace);
   font-size: 0.45em;
   letter-spacing: 0.18em;
-  color: var(--df-text-faint);
+  color: var(--text-faint, #3d607a);
   text-transform: uppercase;
   margin-top: 0.2em;
 }
