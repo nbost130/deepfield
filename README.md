@@ -72,11 +72,15 @@ Each planet's accent is derived from the dominant wavelength of light it actuall
 
 H2 renders as a wide-tracked monospace caps header with a thin accent rule beneath it. H4–H6 step down through mono-caps at decreasing weight and tracking, so deep hierarchy stays legible.
 
+![Heading hierarchy H1–H6](docs/img/headings.png)
+
 ---
 
 ## Standard Markdown
 
 Everything Obsidian renders gets the Deepfield treatment:
+
+![Text formatting — bold, italic, strikethrough, highlight, inline code, links](docs/img/text-formatting.png)
 
 - **Headings** H1–H6 with the type hierarchy above
 - **Blockquotes** as left-bar panels with a faint accent fill
@@ -92,6 +96,26 @@ Everything Obsidian renders gets the Deepfield treatment:
 - **Mermaid** — dark nodes, accent strokes, light labels
 - **Math** (KaTeX) and **footnotes** styled to match
 
+**Lists** — accent markers, open circles at nested depth:
+
+![Lists — unordered with nested open circles, and ordered](docs/img/lists.png)
+
+**Tables** — mono-caps accent headers, faint borders, color-coded status cells:
+
+![Table — seven-tier example with color-coded status](docs/img/table.png)
+
+**Code** — square block, syntax colors tuned to the palette:
+
+![Code block — TypeScript with Deepfield syntax colors](docs/img/code.png)
+
+**Tags** — `[#tag]` bracket-wrapped, mono uppercase, accent brackets (reading view *and* Live Preview):
+
+![Tags — bracketed inline and below](docs/img/tags.png)
+
+**Section divider** — the `[!divider]` callout, a scan line with centered text:
+
+![Section divider — scan line with centered label](docs/img/divider.png)
+
 ### Custom task states
 
 Beyond `[ ]` and `[x]`, Deepfield gives each task state its own glyph and color:
@@ -103,6 +127,8 @@ Beyond `[ ]` and `[x]`, Deepfield gives each task state its own glyph and color:
 | `- [-]` | Cancelled | minus · faint (strikethrough) |
 | `- [>]` | Deferred | arrow · purple |
 | `- [!]` | Important | triangle · red |
+
+![Task list and custom checkbox states](docs/img/tasks.png)
 
 ---
 
@@ -158,6 +184,8 @@ Enable `deepfield-components.css` as a snippet. Block components use **native ca
 | `entry` | Field-guide entry designation |
 | `prose` | One-sentence-per-line column |
 
+![Deepfield callouts — origin tag, entry, attribution, punchline, HUD, horizon ring, bracket, transition, prose](docs/img/callouts.png)
+
 ### Inline components
 
 ```html
@@ -175,6 +203,8 @@ Enable `deepfield-components.css` as a snippet. Block components use **native ca
 <!-- Scan line -->
 <div class="deepfield-scan"><div class="deepfield-scan-rule"></div></div>
 ```
+
+![Inline components — LED indicators, code badges, progress bars, scan line](docs/img/inline-components.png)
 
 A full live reference of every element is in [`EXAMPLE.md`](EXAMPLE.md) — drop it in a vault with the theme + snippet active.
 
