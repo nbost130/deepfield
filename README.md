@@ -188,7 +188,7 @@ Deepfield ships a **"Daylight Readout"** light variant — cool-neutral paper, s
 
 ## Attribution
 
-**Visual aesthetic** inspired by [Caelum](https://www.youtube.com/@caelum) — specifically *The 7 Levels of Black Holes*. The dark editorial typography, monospace section headers, dot separators, and data-annotation style are drawn from their visual language.
+**Visual aesthetic** inspired by [Caelum](https://www.youtube.com/@Caelum_Space) — specifically [*The 7 Levels of Black Holes*](https://www.youtube.com/watch?v=ge4SzvdO1iI). The dark editorial typography, monospace section headers, dot separators, and data-annotation style are drawn from their visual language.
 
 **Space color palettes** sourced from [Filmora's Space Color Palette guide](https://filmora.wondershare.com/video-creative-tips/space-color-palette.html).
 
