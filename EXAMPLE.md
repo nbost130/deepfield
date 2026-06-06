@@ -199,6 +199,20 @@ $$T_H = \frac{\hbar c^3}{8\pi G M k_B}$$
 
 ---
 
+## Mermaid Diagram
+
+```mermaid
+flowchart TD
+    A[Vacuum Fluctuation] --> B{At Event Horizon?}
+    B -->|No| C[Pair Recombines]
+    B -->|Yes| D[Negative particle falls in]
+    D --> E[Black hole loses mass]
+    D --> F[Positive particle escapes]
+    F --> G[Hawking Radiation]
+```
+
+---
+
 ## Embed
 
 A section embed renders inside a left-bar container with a mono uppercase title:
