@@ -384,14 +384,15 @@ body.theme-dark .callout-fold {
   opacity: 0.5;
 }
 
-/* ── CUSTOM CHECKBOX STATES (background-image glyph swap) ──
-   Obsidian renders any non-space char in [ ] as a CHECKED checkbox
-   with data-task="<char>" and draws a checkmark via background-image.
-   We REPLACE that background-image with our own glyph SVG (color baked
-   in, since these status colors are semantic/fixed not palette-driven),
-   which cleanly swaps the checkmark for the right symbol. ── */
+/* ── CUSTOM CHECKBOX STATES ──
+   Obsidian draws the checkmark on input:checked::after as a pseudo-
+   element: background-color: var(--checkbox-marker-color) + a
+   -webkit-mask-image checkmark SVG (confirmed from Obsidian's own
+   app source). To change the glyph we override THAT ::after's mask
+   per state — the box gets translucent fill + colored border, the
+   ::after becomes the state's symbol in the state's color. ── */
 
-/* [x] completed — accent fill + glow, keeps Obsidian's dynamic checkmark */
+/* [x] completed — accent fill + glow, keeps Obsidian's checkmark */
 body.theme-dark input[data-task="x"]:checked,
 body.theme-dark input[data-task="X"]:checked,
 body.theme-dark li[data-task="x"] > input:checked,
@@ -401,60 +402,74 @@ body.theme-dark li[data-task="X"] > input:checked {
   box-shadow: 0 0 6px rgba(var(--interactive-accent-rgb, 29,111,255), 0.4) !important;
 }
 
-/* Shared glyph positioning for custom states */
-body.theme-dark input[data-task="/"]:checked,
-body.theme-dark input[data-task="-"]:checked,
-body.theme-dark input[data-task=">"]:checked,
-body.theme-dark input[data-task="!"]:checked,
-body.theme-dark li[data-task="/"] > input:checked,
-body.theme-dark li[data-task="/"] > p > input:checked,
-body.theme-dark li[data-task="-"] > input:checked,
-body.theme-dark li[data-task="-"] > p > input:checked,
-body.theme-dark li[data-task=">"] > input:checked,
-body.theme-dark li[data-task=">"] > p > input:checked,
-body.theme-dark li[data-task="!"] > input:checked,
-body.theme-dark li[data-task="!"] > p > input:checked {
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
-  background-size: 64% !important;
-}
-
-/* [/] in progress — dot, amber */
+/* Custom-state boxes: translucent fill + colored border, no glow */
 body.theme-dark input[data-task="/"]:checked,
 body.theme-dark li[data-task="/"] > input:checked,
 body.theme-dark li[data-task="/"] > p > input:checked {
   background-color: rgba(192,120,32,0.18) !important;
   border-color: #c07820 !important;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23c07820'%3E%3Ccircle cx='10' cy='10' r='4'/%3E%3C/svg%3E") !important;
+  box-shadow: none !important;
 }
-
-/* [-] cancelled — minus, faint */
 body.theme-dark input[data-task="-"]:checked,
 body.theme-dark li[data-task="-"] > input:checked,
 body.theme-dark li[data-task="-"] > p > input:checked {
   background-color: rgba(100,100,100,0.15) !important;
   border-color: #5a6a7a !important;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%237a8a9a'%3E%3Cpath fill-rule='evenodd' d='M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z' clip-rule='evenodd'/%3E%3C/svg%3E") !important;
+  box-shadow: none !important;
 }
-
-/* [>] deferred — arrow, purple */
 body.theme-dark input[data-task=">"]:checked,
 body.theme-dark li[data-task=">"] > input:checked,
 body.theme-dark li[data-task=">"] > p > input:checked {
   background-color: rgba(155,125,255,0.18) !important;
   border-color: #9b7dff !important;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%239b7dff'%3E%3Cpath fill-rule='evenodd' d='M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E") !important;
+  box-shadow: none !important;
 }
-
-/* [!] important — triangle, red */
 body.theme-dark input[data-task="!"]:checked,
 body.theme-dark li[data-task="!"] > input:checked,
 body.theme-dark li[data-task="!"] > p > input:checked {
   background-color: rgba(224,96,96,0.18) !important;
   border-color: #e06060 !important;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23e06060'%3E%3Cpath fill-rule='evenodd' d='M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z' clip-rule='evenodd'/%3E%3C/svg%3E") !important;
+  box-shadow: none !important;
+}
+
+/* [/] in progress — dot glyph, amber */
+body.theme-dark input[data-task="/"]:checked::after,
+body.theme-dark li[data-task="/"] > input:checked::after,
+body.theme-dark li[data-task="/"] > p > input:checked::after {
+  background-color: #c07820 !important;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='4'/%3E%3C/svg%3E") !important;
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='4'/%3E%3C/svg%3E") !important;
+  -webkit-mask-size: 60% !important; mask-size: 60% !important;
+}
+
+/* [-] cancelled — minus glyph, faint */
+body.theme-dark input[data-task="-"]:checked::after,
+body.theme-dark li[data-task="-"] > input:checked::after,
+body.theme-dark li[data-task="-"] > p > input:checked::after {
+  background-color: #8a9aaa !important;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill-rule='evenodd' d='M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z' clip-rule='evenodd'/%3E%3C/svg%3E") !important;
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill-rule='evenodd' d='M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z' clip-rule='evenodd'/%3E%3C/svg%3E") !important;
+  -webkit-mask-size: 65% !important; mask-size: 65% !important;
+}
+
+/* [>] deferred — arrow glyph, purple */
+body.theme-dark input[data-task=">"]:checked::after,
+body.theme-dark li[data-task=">"] > input:checked::after,
+body.theme-dark li[data-task=">"] > p > input:checked::after {
+  background-color: #9b7dff !important;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill-rule='evenodd' d='M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E") !important;
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill-rule='evenodd' d='M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E") !important;
+  -webkit-mask-size: 65% !important; mask-size: 65% !important;
+}
+
+/* [!] important — triangle glyph, red */
+body.theme-dark input[data-task="!"]:checked::after,
+body.theme-dark li[data-task="!"] > input:checked::after,
+body.theme-dark li[data-task="!"] > p > input:checked::after {
+  background-color: #e06060 !important;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill-rule='evenodd' d='M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z' clip-rule='evenodd'/%3E%3C/svg%3E") !important;
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill-rule='evenodd' d='M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z' clip-rule='evenodd'/%3E%3C/svg%3E") !important;
+  -webkit-mask-size: 65% !important; mask-size: 65% !important;
 }
 
 /* Text styling per state */
