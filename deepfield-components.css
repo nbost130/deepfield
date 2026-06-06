@@ -77,7 +77,7 @@
   border-top: none !important;
   border-right: none !important;
   border-bottom: none !important;
-  background: rgba(29, 111, 255, 0.04) !important;
+  background: rgba(var(--interactive-accent-rgb, 29,111,255), 0.04) !important;
   margin: 1.2em 0;
 }
 
@@ -131,7 +131,7 @@
   border-top: none !important;
   border-right: none !important;
   border-bottom: none !important;
-  background: rgba(29, 111, 255, 0.04) !important;
+  background: rgba(var(--interactive-accent-rgb, 29,111,255), 0.04) !important;
   margin: 1em 0;
   padding: 0 !important;
 }
@@ -193,7 +193,7 @@
      > Supernova Remnant
    ─────────────────────────────────────────────────────────────── */
 .callout[data-callout="origin"] {
-  border: 1px solid rgba(29, 111, 255, 0.3) !important;
+  border: 1px solid rgba(var(--interactive-accent-rgb, 29,111,255), 0.3) !important;
   background: transparent !important;
   margin: 0 0 0.8em;
   display: inline-block;
@@ -266,7 +266,7 @@
   position: absolute;
   width: 12px;
   height: 12px;
-  border-color: rgba(29, 111, 255, 0.4);
+  border-color: rgba(var(--interactive-accent-rgb, 29,111,255), 0.4);
   border-style: solid;
 }
 
@@ -279,7 +279,7 @@
   position: absolute;
   width: 12px;
   height: 12px;
-  border-color: rgba(29, 111, 255, 0.4);
+  border-color: rgba(var(--interactive-accent-rgb, 29,111,255), 0.4);
   border-style: solid;
 }
 
@@ -310,8 +310,8 @@
      > Tier 01 · Primordial · M ≤ 10¹² kg → Tier 02 · Stellar-Mass
    ─────────────────────────────────────────────────────────────── */
 .callout[data-callout="transition"] {
-  border: 1px solid rgba(29, 111, 255, 0.12) !important;
-  background: rgba(29, 111, 255, 0.03) !important;
+  border: 1px solid rgba(var(--interactive-accent-rgb, 29,111,255), 0.12) !important;
+  background: rgba(var(--interactive-accent-rgb, 29,111,255), 0.03) !important;
   margin: 1.5em 0;
 }
 
@@ -330,7 +330,7 @@
 
 .callout[data-callout="transition"] .callout-content {
   padding: 0.4em 1.2em 0.8em !important;
-  border-top: 1px solid rgba(29, 111, 255, 0.08) !important;
+  border-top: 1px solid rgba(var(--interactive-accent-rgb, 29,111,255), 0.08) !important;
 }
 
 /* First line — subtitle "Ten billion billion heavier" */
@@ -365,7 +365,7 @@
      > Mostly invisible.
    ─────────────────────────────────────────────────────────────── */
 .callout[data-callout="prose"] {
-  border-left: 1px solid rgba(29, 111, 255, 0.15) !important;
+  border-left: 1px solid rgba(var(--interactive-accent-rgb, 29,111,255), 0.15) !important;
   border-top: none !important;
   border-right: none !important;
   border-bottom: none !important;
@@ -423,7 +423,6 @@
   display: flex !important;
   align-items: center !important;
   flex: 1 !important;
-  gap: 0.8em !important;
   background: transparent !important;
   padding: 0 !important;
   gap: 0 !important;
@@ -433,7 +432,7 @@
   content: '' !important;
   flex: 1 !important;
   height: 1px !important;
-  background: linear-gradient(to right, rgba(29,111,255,.5), rgba(29,111,255,.15)) !important;
+  background: linear-gradient(to right, rgba(var(--interactive-accent-rgb, 29,111,255),.5), rgba(var(--interactive-accent-rgb, 29,111,255),.15)) !important;
   display: block !important;
   margin-right: 0.8em !important;
 }
@@ -442,7 +441,7 @@
   content: '' !important;
   flex: 1 !important;
   height: 1px !important;
-  background: linear-gradient(to left, rgba(29,111,255,.5), rgba(29,111,255,.15)) !important;
+  background: linear-gradient(to left, rgba(var(--interactive-accent-rgb, 29,111,255),.5), rgba(var(--interactive-accent-rgb, 29,111,255),.15)) !important;
   display: block !important;
   margin-left: 0.8em !important;
 }
@@ -482,8 +481,8 @@
   height: 28px !important;
   min-width: 28px !important;
   border-radius: 50% !important;
-  border: 1px dashed rgba(29, 111, 255, 0.4) !important;
-  box-shadow: inset 0 0 6px rgba(29, 111, 255, 0.15) !important;
+  border: 1px dashed rgba(var(--interactive-accent-rgb, 29,111,255), 0.4) !important;
+  box-shadow: inset 0 0 6px rgba(var(--interactive-accent-rgb, 29,111,255), 0.15) !important;
 }
 
 .callout[data-callout="horizon"] .callout-title {
@@ -538,8 +537,8 @@
 }
 
 .deepfield-tier-table tr {
-  background: rgba(29,111,255,.04);
-  border: 1px solid rgba(29,111,255,.1);
+  background: rgba(var(--interactive-accent-rgb, 29,111,255),.04);
+  border: 1px solid rgba(var(--interactive-accent-rgb, 29,111,255),.1);
 }
 
 .deepfield-tier-table td {
@@ -594,7 +593,7 @@
 .deepfield-scan-rule {
   flex: 1;
   height: 1px;
-  background: linear-gradient(to right, rgba(29,111,255,.5), transparent);
+  background: linear-gradient(to right, rgba(var(--interactive-accent-rgb, 29,111,255),.5), transparent);
 }
 
 .deepfield-coord {
@@ -619,7 +618,7 @@
 }
 .deepfield-bar-track {
   height: 3px;
-  background: rgba(29,111,255,.1);
+  background: rgba(var(--interactive-accent-rgb, 29,111,255),.1);
   position: relative;
 }
 .deepfield-bar-fill {
@@ -640,8 +639,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(29,111,255,.1);
-  border: 1px solid rgba(29,111,255,.25);
+  background: rgba(var(--interactive-accent-rgb, 29,111,255),.1);
+  border: 1px solid rgba(var(--interactive-accent-rgb, 29,111,255),.25);
   padding: 0.4em 0.8em;
   margin-right: 0.5em;
   vertical-align: middle;

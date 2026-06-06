@@ -111,11 +111,11 @@ body.theme-dark {
   --background-secondary:            #030810;
   --background-secondary-alt:        #040a10;
   --background-tertiary:             #060e18;
-  --background-modifier-hover:       rgba(29, 111, 255, 0.06);
-  --background-modifier-active-hover: rgba(29, 111, 255, 0.1);
-  --background-modifier-border:      rgba(29, 111, 255, 0.04);
-  --background-modifier-border-hover: rgba(29, 111, 255, 0.12);
-  --background-modifier-border-focus: rgba(29, 111, 255, 0.28);
+  --background-modifier-hover:       rgba(var(--interactive-accent-rgb), 0.06);
+  --background-modifier-active-hover: rgba(var(--interactive-accent-rgb), 0.1);
+  --background-modifier-border:      rgba(var(--interactive-accent-rgb), 0.04);
+  --background-modifier-border-hover: rgba(var(--interactive-accent-rgb), 0.12);
+  --background-modifier-border-focus: rgba(var(--interactive-accent-rgb), 0.28);
   --background-modifier-form-field:  #060e18;
   --background-modifier-form-field-highlighted: #091320;
   --background-modifier-success:     rgba(61, 201, 160, 0.15);
@@ -134,8 +134,8 @@ body.theme-dark {
   --text-italic:      #8aabcc;
   --text-code:        #7ec8ff;
   --text-blockquote:  #8aabcc;
-  --text-mark:        rgba(29, 111, 255, 0.25);
-  --text-selection:   rgba(29, 111, 255, 0.2);
+  --text-mark:        rgba(var(--interactive-accent-rgb), 0.25);
+  --text-selection:   rgba(var(--interactive-accent-rgb), 0.2);
 
   /* Headings */
   --h1-color:  #e8f2ff;
@@ -159,7 +159,7 @@ body.theme-dark {
   --interactive-accent:      #1d6fff;
   --interactive-accent-hover: #3380ff;
   --interactive-accent-rgb:  29, 111, 255;
-  --background-modifier-accent: rgba(29, 111, 255, 0.15);
+  --background-modifier-accent: rgba(var(--interactive-accent-rgb), 0.15);
 
   /* Links */
   --link-color:              #4d9fff;
@@ -172,9 +172,9 @@ body.theme-dark {
   /* Tags */
   --tag-color:               #4d9fff;
   --tag-color-hover:         #80bdff;
-  --tag-background:          rgba(29, 111, 255, 0.12);
-  --tag-background-hover:    rgba(29, 111, 255, 0.2);
-  --tag-border-color:        rgba(29, 111, 255, 0.25);
+  --tag-background:          rgba(var(--interactive-accent-rgb), 0.12);
+  --tag-background-hover:    rgba(var(--interactive-accent-rgb), 0.2);
+  --tag-border-color:        rgba(var(--interactive-accent-rgb), 0.25);
   --tag-border-width:        1px;
   --tag-border-radius:       0px;   /* square tags, Caelum style */
   --tag-padding-x:           0.5em;
@@ -196,20 +196,20 @@ body.theme-dark {
   --code-size:               .85em;
 
   /* Borders */
-  --divider-color:           rgba(29, 111, 255, 0.03);
-  --modal-border-color:      rgba(29, 111, 255, 0.15);
-  --prompt-border-color:     rgba(29, 111, 255, 0.2);
-  --sidebar-markdown-link-border: rgba(29, 111, 255, 0.15);
+  --divider-color:           rgba(var(--interactive-accent-rgb), 0.03);
+  --modal-border-color:      rgba(var(--interactive-accent-rgb), 0.15);
+  --prompt-border-color:     rgba(var(--interactive-accent-rgb), 0.2);
+  --sidebar-markdown-link-border: rgba(var(--interactive-accent-rgb), 0.15);
 
   /* Scrollbars */
   --scrollbar-bg:            transparent;
-  --scrollbar-thumb-bg:      rgba(29, 111, 255, 0.12);
-  --scrollbar-active-thumb-bg: rgba(29, 111, 255, 0.25);
+  --scrollbar-thumb-bg:      rgba(var(--interactive-accent-rgb), 0.12);
+  --scrollbar-active-thumb-bg: rgba(var(--interactive-accent-rgb), 0.25);
 
   /* Checkboxes */
   --checkbox-color:          #1d6fff;
   --checkbox-color-hover:    #4d9fff;
-  --checkbox-border-color:   rgba(29, 111, 255, 0.3);
+  --checkbox-border-color:   rgba(var(--interactive-accent-rgb), 0.3);
   --checkbox-marker-color:   #020509;
 
   /* Graph */
@@ -218,8 +218,8 @@ body.theme-dark {
   --graph-node-unresolved:   #1e3347;
   --graph-node-tag:          #9b7dff;
   --graph-node-attachment:   #3dc9a0;
-  --graph-line:              rgba(29, 111, 255, 0.12);
-  --graph-line-focused:      rgba(29, 111, 255, 0.4);
+  --graph-line:              rgba(var(--interactive-accent-rgb), 0.12);
+  --graph-line-focused:      rgba(var(--interactive-accent-rgb), 0.4);
 
   /* Title bar */
   --titlebar-background:     #020509;
@@ -407,7 +407,7 @@ body .cm-header-2 {
   letter-spacing: 0.2em;
   font-size: 0.75em;
   color: var(--interactive-accent);
-  border-bottom: 1px solid rgba(29, 111, 255, 0.12);
+  border-bottom: 1px solid rgba(var(--interactive-accent-rgb), 0.12);
   padding-bottom: 0.4em;
 }
 
@@ -512,8 +512,8 @@ body .mermaid .edgeLabel .label-container {
 }
 
 body .mermaid .cluster rect {
-  fill: rgba(29,111,255,0.03) !important;
-  stroke: rgba(29,111,255,0.15) !important;
+  fill: rgba(var(--interactive-accent-rgb),0.03) !important;
+  stroke: rgba(var(--interactive-accent-rgb),0.15) !important;
 }
 
 /* ── BLOCKQUOTE — left bar style ── */
@@ -523,7 +523,7 @@ body blockquote {
   border-top: none;
   border-bottom: none;
   padding: 0.5em 0 0.5em 1em;
-  background: rgba(29, 111, 255, 0.04);
+  background: rgba(var(--interactive-accent-rgb), 0.04);
   color: var(--text-muted);
   margin: 1em 0;
 }
@@ -539,7 +539,7 @@ body .markdown-rendered mark {
 
 /* ── FOOTNOTES ── */
 body .footnotes {
-  border-top: 1px solid rgba(29,111,255,.08);
+  border-top: 1px solid rgba(var(--interactive-accent-rgb),.08);
   margin-top: 2em;
   padding-top: 1em;
   font-size: 0.78em;
@@ -683,32 +683,32 @@ body th {
   text-transform: uppercase;
   color: var(--interactive-accent);
   font-weight: 400;
-  border-bottom: 1px solid rgba(29, 111, 255, 0.25);
+  border-bottom: 1px solid rgba(var(--interactive-accent-rgb), 0.25);
   background: transparent;
 }
 
 body td {
-  border-color: rgba(29, 111, 255, 0.08);
+  border-color: rgba(var(--interactive-accent-rgb), 0.08);
   font-size: 0.9em;
 }
 
 body tr:nth-child(even) td {
-  background: rgba(29, 111, 255, 0.02);
+  background: rgba(var(--interactive-accent-rgb), 0.02);
 }
 
 /* ── HORIZONTAL RULE — scan line style ── */
 body hr {
   border: none;
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(29,111,255,.25) 30%, rgba(29,111,255,.25) 70%, transparent);
+  background: linear-gradient(to right, transparent, rgba(var(--interactive-accent-rgb),.25) 30%, rgba(var(--interactive-accent-rgb),.25) 70%, transparent);
   margin: 2em 0;
 }
 
 /* ── FRONTMATTER / PROPERTIES PANEL ── */
 body .metadata-container {
-  border: 1px solid rgba(29, 111, 255, 0.1);
+  border: 1px solid rgba(var(--interactive-accent-rgb), 0.1);
   border-left: 2px solid var(--interactive-accent);
-  background: rgba(29, 111, 255, 0.03);
+  background: rgba(var(--interactive-accent-rgb), 0.03);
   border-radius: 0;
   padding: 0.6em 0.8em;
   margin-bottom: 2em;
@@ -719,7 +719,7 @@ body .metadata-properties-heading {
 }
 
 body .metadata-property {
-  border-bottom: 1px solid rgba(29, 111, 255, 0.06);
+  border-bottom: 1px solid rgba(var(--interactive-accent-rgb), 0.06);
   padding: 0.15em 0;
 }
 body .metadata-property:last-child { border-bottom: none; }
@@ -741,10 +741,10 @@ body .metadata-property-value {
 /* ── EMBEDS — left-bar container, mono title ── */
 body .markdown-embed,
 body .internal-embed.markdown-embed {
-  border: 1px solid rgba(29, 111, 255, 0.1);
+  border: 1px solid rgba(var(--interactive-accent-rgb), 0.1);
   border-left: 2px solid var(--interactive-accent);
   border-radius: 0;
-  background: rgba(29, 111, 255, 0.03);
+  background: rgba(var(--interactive-accent-rgb), 0.03);
   padding-left: 0.2em;
   margin: 0.8em 0;
 }
@@ -769,7 +769,7 @@ body .markdown-embed-link:hover {
 body .internal-embed img,
 body .image-embed img {
   border-radius: 0;
-  border: 1px solid rgba(29, 111, 255, 0.1);
+  border: 1px solid rgba(var(--interactive-accent-rgb), 0.1);
 }
 
 /* ── TAGS — Option C: [#tag] bracket-wrapped, mono uppercase ── */
@@ -827,7 +827,7 @@ body .nav-file-title {
 }
 
 body .nav-file-title.is-active {
-  background: rgba(29, 111, 255, 0.1);
+  background: rgba(var(--interactive-accent-rgb), 0.1);
   border-right: 2px solid var(--interactive-accent);
   color: #4d9fff;
 }
@@ -844,7 +844,7 @@ body .search-result-file-title {
 /* ── STATUS BAR ── */
 body .status-bar {
   background: rgba(3, 8, 16, 0.95);
-  border-top: 1px solid rgba(29, 111, 255, 0.08);
+  border-top: 1px solid rgba(var(--interactive-accent-rgb), 0.08);
   font-family: var(--font-monospace-theme);
   font-size: 0.65em;
   letter-spacing: 0.12em;
@@ -862,7 +862,7 @@ body .workspace-tab-header.is-active {
 /* ── MODAL & COMMAND PALETTE ── */
 body .prompt {
   background: #040a10;
-  border: 1px solid rgba(29, 111, 255, 0.2);
+  border: 1px solid rgba(var(--interactive-accent-rgb), 0.2);
   border-radius: 0;
 }
 
@@ -872,20 +872,20 @@ body .prompt-input {
 }
 
 body .suggestion-item.is-selected {
-  background: rgba(29, 111, 255, 0.1);
+  background: rgba(var(--interactive-accent-rgb), 0.1);
   border-left: 2px solid var(--interactive-accent);
 }
 
 /* ────────────────────────────────────────────────────────────
-   CAELUM CUSTOM CSS CLASSES
+   DEEPFIELD CUSTOM CSS CLASSES
    Use via cssClass frontmatter or with the Style Settings plugin.
    ──────────────────────────────────────────────────────────── */
 
 /* ── Origin tag — "SUPERNOVA REMNANT" rectangular label
-   Usage: add class="caelum-origin" to a paragraph ── */
+   Usage: add class="deepfield-origin" to a paragraph ── */
 body .deepfield-origin {
   display: inline-block;
-  border: 1px solid rgba(29, 111, 255, 0.3);
+  border: 1px solid rgba(var(--interactive-accent-rgb), 0.3);
   font-family: var(--font-monospace-theme);
   font-size: 0.6em;
   letter-spacing: 0.22em;
@@ -896,7 +896,7 @@ body .deepfield-origin {
 }
 
 /* ── HUD panel — transparent bg + vertical left bar
-   Usage: wrap content in a div with class caelum-hud ── */
+   Usage: wrap content in a div with class deepfield-hud ── */
 body .deepfield-hud {
   display: flex;
   margin: 1em 0;
@@ -912,13 +912,13 @@ body .deepfield-hud-bar {
 body .deepfield-hud-body {
   flex: 1;
   padding: 0.75em 1em;
-  background: rgba(29, 111, 255, 0.04);
-  border: 1px solid rgba(29, 111, 255, 0.1);
+  background: rgba(var(--interactive-accent-rgb), 0.04);
+  border: 1px solid rgba(var(--interactive-accent-rgb), 0.1);
   border-left: none;
 }
 
 /* ── Punchline — "SLOWLY · UNSTOPPABLY"
-   Usage: paragraph with class caelum-punchline ── */
+   Usage: paragraph with class deepfield-punchline ── */
 body .deepfield-punchline {
   font-family: var(--font-monospace-theme);
   font-size: 0.72em;
@@ -944,7 +944,7 @@ body .deepfield-bracket-inner::after {
   position: absolute;
   width: 12px;
   height: 12px;
-  border-color: rgba(29, 111, 255, 0.4);
+  border-color: rgba(var(--interactive-accent-rgb), 0.4);
   border-style: solid;
 }
 
@@ -975,7 +975,7 @@ body .deepfield-scan::after {
 body .deepfield-scan-rule {
   flex: 1;
   height: 1px;
-  background: linear-gradient(to right, rgba(29,111,255,.5), transparent);
+  background: linear-gradient(to right, rgba(var(--interactive-accent-rgb),.5), transparent);
 }
 
 /* ── LED status indicator
@@ -1009,7 +1009,7 @@ body .deepfield-attribution {
   border-left: 2px solid var(--interactive-accent);
   padding: 0.8em 1.2em;
   margin: 1.5em 0;
-  background: rgba(29, 111, 255, 0.04);
+  background: rgba(var(--interactive-accent-rgb), 0.04);
 }
 
 body .deepfield-attribution-meta {
@@ -1057,7 +1057,7 @@ body .deepfield-bar-label {
 
 body .deepfield-bar-track {
   height: 3px;
-  background: rgba(29, 111, 255, 0.1);
+  background: rgba(var(--interactive-accent-rgb), 0.1);
   position: relative;
 }
 
@@ -1083,7 +1083,7 @@ body .deepfield-bar-fill::after {
 body .callout {
   border-radius: 0;
   border-left-width: 2px;
-  background: rgba(29, 111, 255, 0.05);
+  background: rgba(var(--interactive-accent-rgb), 0.05);
 }
 
 body .callout-title {
@@ -1094,12 +1094,12 @@ body .callout-title {
 }
 
 /* ── Graph view ── */
-body .graph-view.color-fill { color: rgba(29, 111, 255, 0.6); }
-body .graph-view.color-line { color: rgba(29, 111, 255, 0.08); }
+body .graph-view.color-fill { color: rgba(var(--interactive-accent-rgb), 0.6); }
+body .graph-view.color-line { color: rgba(var(--interactive-accent-rgb), 0.08); }
 body .graph-view.color-fill-focused { color: #4d9fff; }
-body .graph-view.color-fill-unresolved { color: rgba(29, 111, 255, 0.15); }
+body .graph-view.color-fill-unresolved { color: rgba(var(--interactive-accent-rgb), 0.15); }
 body .graph-view.color-fill-tag { color: #9b7dff; }
-body .graph-view.color-arrow { color: rgba(29, 111, 255, 0.25); }
+body .graph-view.color-arrow { color: rgba(var(--interactive-accent-rgb), 0.25); }
 
 /* ================================================================
    COLOR PALETTE VARIANTS
@@ -1112,11 +1112,11 @@ body.deepfield-electric {
   --interactive-accent: #1d6fff; --interactive-accent-hover: #3380ff;
   --text-accent: #4d9fff; --text-accent-hover: #80bdff;
   --link-color: #4d9fff; --link-color-hover: #80bdff;
-  --tag-color: #4d9fff; --tag-background: rgba(29,111,255,.12); --tag-border-color: rgba(29,111,255,.25);
-  --background-modifier-border: rgba(29,111,255,.04);
-  --background-modifier-border-hover: rgba(29,111,255,.12);
-  --background-modifier-border-focus: rgba(29,111,255,.28);
-  --background-modifier-accent: rgba(29,111,255,.15);
+  --tag-color: #4d9fff; --tag-background: rgba(var(--interactive-accent-rgb),.12); --tag-border-color: rgba(var(--interactive-accent-rgb),.25);
+  --background-modifier-border: rgba(var(--interactive-accent-rgb),.04);
+  --background-modifier-border-hover: rgba(var(--interactive-accent-rgb),.12);
+  --background-modifier-border-focus: rgba(var(--interactive-accent-rgb),.28);
+  --background-modifier-accent: rgba(var(--interactive-accent-rgb),.15);
   --interactive-accent-rgb: 29,111,255;
   --code-normal: #7ec8ff; --checkbox-color: #1d6fff;
 }
