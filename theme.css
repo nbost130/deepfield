@@ -341,18 +341,6 @@ body.theme-dark .cm-content ul ul > li::marker {
   color: var(--text-faint);
 }
 
-/* Live Preview nested bullets — open circle for depth 2+ */
-body.theme-dark .HyperMD-list-line-2 .list-bullet::after,
-body.theme-dark .HyperMD-list-line-3 .list-bullet::after,
-body.theme-dark .HyperMD-list-line-4 .list-bullet::after {
-  content: "◦" !important;
-}
-body.theme-dark .HyperMD-list-line-2 .list-bullet,
-body.theme-dark .HyperMD-list-line-3 .list-bullet,
-body.theme-dark .HyperMD-list-line-4 .list-bullet {
-  color: var(--text-faint);
-}
-
 /* ── MERMAID DIAGRAMS ── */
 body.theme-dark .mermaid {
   --mermaid-node-bg: rgba(29,111,255,0.08);
@@ -371,11 +359,24 @@ body.theme-dark .mermaid .flowchart-link {
   stroke: var(--text-faint) !important;
 }
 body.theme-dark .mermaid .nodeLabel,
-body.theme-dark .mermaid .edgeLabel,
-body.theme-dark .mermaid text {
-  fill: var(--text-normal) !important;
-  color: var(--text-normal) !important;
+body.theme-dark .mermaid .nodeLabel *,
+body.theme-dark .mermaid .node .label,
+body.theme-dark .mermaid .node text,
+body.theme-dark .mermaid foreignObject div,
+body.theme-dark .mermaid foreignObject span,
+body.theme-dark .mermaid span.nodeLabel,
+body.theme-dark .mermaid p {
+  fill: #e8f2ff !important;
+  color: #e8f2ff !important;
   font-family: var(--font-text-theme) !important;
+}
+/* edge labels (No / Yes) — readable on their backing */
+body.theme-dark .mermaid .edgeLabel,
+body.theme-dark .mermaid .edgeLabel *,
+body.theme-dark .mermaid .edgeLabel p {
+  color: var(--text-muted) !important;
+  fill: var(--text-muted) !important;
+  background-color: var(--background-primary) !important;
 }
 body.theme-dark .mermaid .cluster rect {
   fill: rgba(29,111,255,0.03) !important;
