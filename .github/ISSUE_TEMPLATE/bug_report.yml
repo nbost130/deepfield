@@ -1,0 +1,55 @@
+name: Bug report
+description: Something renders incorrectly in Deepfield
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What's wrong
+      description: What renders incorrectly, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot
+      description: A screenshot makes this 10× faster to fix. Drag it here.
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Color scheme
+      options:
+        - Dark
+        - Light
+    validations:
+      required: true
+  - type: input
+    id: palette
+    attributes:
+      label: Active palette
+      description: Which Style Settings palette (e.g. Electric, Mars, Neptune)?
+      placeholder: Electric
+  - type: input
+    id: obsidian-version
+    attributes:
+      label: Obsidian version
+      description: Settings → About → Current version
+      placeholder: "1.x.x"
+    validations:
+      required: true
+  - type: dropdown
+    id: snippet
+    attributes:
+      label: Is the deepfield-components snippet enabled?
+      options:
+        - "Yes"
+        - "No"
+        - "Not sure"
+  - type: dropdown
+    id: minimal
+    attributes:
+      label: Is the Minimal theme also installed?
+      options:
+        - "Yes"
+        - "No"

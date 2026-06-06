@@ -1,5 +1,9 @@
 # Deepfield
 
+[![Release](https://img.shields.io/github/v/release/nbost130/deepfield?style=flat-square&color=1d6fff)](https://github.com/nbost130/deepfield/releases)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1d6fff?style=flat-square)](LICENSE)
+[![Obsidian](https://img.shields.io/badge/Obsidian-theme-1d6fff?style=flat-square&logo=obsidian&logoColor=white)](https://obsidian.md)
+
 A dark, sci-fi editorial theme for [Obsidian](https://obsidian.md). Named for the Hubble Deep Field.
 
 Sparse typography. Blue glow. Technical precision. Inspired by the visual language of space-documentary filmmaking — wide-tracked monospace section headers, hard corners, and data that reads like a mission-control readout.

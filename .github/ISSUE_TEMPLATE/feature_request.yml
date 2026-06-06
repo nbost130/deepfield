@@ -1,0 +1,28 @@
+name: Feature request
+description: Suggest a new palette, component, or element coverage
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Type
+      options:
+        - New color palette
+        - New custom component / callout
+        - Coverage for an unstyled element
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: The idea
+      description: What would you like to see, and how would you use it?
+    validations:
+      required: true
+  - type: textarea
+    id: reference
+    attributes:
+      label: Reference / inspiration
+      description: Links, screenshots, or color values that capture the look you're after.
