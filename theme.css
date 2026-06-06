@@ -341,16 +341,18 @@ body.theme-dark .cm-content ul ul > li::marker {
   color: var(--text-faint);
 }
 
-/* ── MERMAID DIAGRAMS ── */
-body.theme-dark .mermaid {
-  --mermaid-node-bg: rgba(29,111,255,0.08);
-  background: transparent;
-}
+/* ── MERMAID DIAGRAMS ──
+   Mermaid injects scoped <style> into the SVG; node fill kept light
+   enough that labels read even if mermaid's own color wins, and labels
+   forced bright at high specificity. ── */
+body.theme-dark .mermaid { background: transparent; }
+
 body.theme-dark .mermaid .node rect,
 body.theme-dark .mermaid .node circle,
 body.theme-dark .mermaid .node polygon,
-body.theme-dark .mermaid .node path {
-  fill: rgba(29,111,255,0.08) !important;
+body.theme-dark .mermaid .node path,
+body.theme-dark .mermaid .node .basic.label-container {
+  fill: #14233a !important;
   stroke: var(--interactive-accent) !important;
   stroke-width: 1px !important;
 }
@@ -358,26 +360,36 @@ body.theme-dark .mermaid .edgePath .path,
 body.theme-dark .mermaid .flowchart-link {
   stroke: var(--text-faint) !important;
 }
-body.theme-dark .mermaid .nodeLabel,
-body.theme-dark .mermaid .nodeLabel *,
+
+/* Node labels — force bright, cover every element mermaid may use */
+body.theme-dark .mermaid .node .nodeLabel,
+body.theme-dark .mermaid .node .nodeLabel p,
 body.theme-dark .mermaid .node .label,
+body.theme-dark .mermaid .node .label *,
+body.theme-dark .mermaid .node foreignObject *,
 body.theme-dark .mermaid .node text,
-body.theme-dark .mermaid foreignObject div,
-body.theme-dark .mermaid foreignObject span,
-body.theme-dark .mermaid span.nodeLabel,
-body.theme-dark .mermaid p {
+body.theme-dark .mermaid .node tspan,
+body.theme-dark .mermaid g.label,
+body.theme-dark .mermaid g.label * {
   fill: #e8f2ff !important;
   color: #e8f2ff !important;
   font-family: var(--font-text-theme) !important;
 }
-/* edge labels (No / Yes) — readable on their backing */
+
+/* Edge labels (No / Yes) — bright with dark backing */
 body.theme-dark .mermaid .edgeLabel,
 body.theme-dark .mermaid .edgeLabel *,
-body.theme-dark .mermaid .edgeLabel p {
-  color: var(--text-muted) !important;
-  fill: var(--text-muted) !important;
+body.theme-dark .mermaid .edgeLabel p,
+body.theme-dark .mermaid .edgeLabel rect {
+  color: #c8d8ec !important;
+  fill: #c8d8ec !important;
   background-color: var(--background-primary) !important;
 }
+body.theme-dark .mermaid .edgeLabel rect {
+  fill: var(--background-primary) !important;
+  opacity: 0.9 !important;
+}
+
 body.theme-dark .mermaid .cluster rect {
   fill: rgba(29,111,255,0.03) !important;
   stroke: rgba(29,111,255,0.15) !important;
