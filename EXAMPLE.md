@@ -27,8 +27,16 @@ A [[wikilink]] and an [[wikilink|aliased display name]] and an [external link](h
 
 # H1 — Primary Title
 ## H2 — Section Header
+
+
 ### H3 — Subsection
-#### H4 — Sub-subsection
+The vacuum is therefore an active place with complex structure. There is no way to isolate a region of space and leave it perfectly empty.
+#### H4 • Sub-subsection
+Particles can be thought of as excitations of the vacuum — ripples in a sea that always ripples.
+##### H5 · Minor Detail
+Vacuum fluctuations are not a theoretical curiosity. They are directly observable.
+###### H6 · Fine Print
+See also: spontaneous emission, Casimir effect, Lamb shift.
 
 ---
 
@@ -69,15 +77,19 @@ A [[wikilink]] and an [[wikilink|aliased display name]] and an [external link](h
 > Slowly · Unstoppably
 
 > [!hud] TIER_07 · COSMIC_HORIZON_CLASS
-> We may be inside one. The math of how a sphere collapses under its own gravity and the math of how a universe expands return the same equation. We do not have the words yet.
+> We may be inside one. The math of how a sphere collapses under its own gravity and the math of how a universe expands return the same equation. 
+> 
+> We do not have the words yet.
 
 > [!horizon] Event Horizon · r_s = 2GM/c²
 
 > [!bracket] XY_0.53 · 258.6958 · TIER_02
 > Stellar-mass black holes form when a massive star runs out of fuel and collapses under its own gravity. Anything heavier than roughly three suns cannot stop falling.
 
-> [!transition] ×10¹⁹ · Ten Billion Billion Heavier
-> **Tier 01** · Primordial · M ≤ 10¹² kg → **Tier 02** · Stellar-Mass · M ≈ 10³¹ kg
+> [!transition] ×10¹⁹
+> Ten billion billion heavier
+> 
+> Tier 01 · Primordial · M ≤ 10¹² kg → Tier 02 · Stellar-Mass · M ≈ 10³¹ kg
 
 > [!prose]
 > There are roughly 100 million of them in the Milky Way alone.
@@ -103,7 +115,7 @@ A [[wikilink]] and an [[wikilink|aliased display name]] and an [external link](h
 
 **Progress bars:**
 
-<div class="deepfield-bar"><div class="deepfield-bar-label"><span>Confirmed_Tiers</span><span>4 / 7</span></div><div class="deepfield-bar-track"><div class="deepfield-bar-fill" style="width:57%"></div></div></div>
+<div class="deepfield-bar"><div class="deepfield-bar-label"><span>Confirmed_Tiers</span><span>4 / 7</span></div><div class="deepfield-bar-track"><div class="deepfield-bar-fill" style="width:89%"></div></div></div>
 
 <div class="deepfield-bar"><div class="deepfield-bar-label"><span>Papers_Read</span><span>0 / 17</span></div><div class="deepfield-bar-track"><div class="deepfield-bar-fill" style="width:0%"></div></div></div>
 
@@ -135,16 +147,35 @@ A [[wikilink]] and an [[wikilink|aliased display name]] and an [external link](h
 - [ ] Read Hawking 1975 (Particle Creation by Black Holes)
 - [ ] Read Guth 1981 (The Inflationary Universe)
 
+## Custom Checkbox States
+
+These use Obsidian's `data-task` mechanism — any character in the brackets renders a styled marker. Each gets its own glyph and color.
+
+- [x] Completed — done and verified
+- [/] In Progress — currently working
+- [-] Cancelled — will not do
+- [>] Deferred — moved to later
+- [!] Important — high priority
+
 ---
 
-## Table
+## Table — All Seven Tiers
 
-| Tier | Name | Mass | Status |
-|------|------|------|--------|
-| 01 | Primordial Micro | ≤ 10¹² kg | Theoretical |
-| 02 | Stellar-Mass | 3–100 M☉ | Confirmed |
-| 04 | Supermassive | 1M–9B M☉ | Imaged |
-| 07 | Cosmic-Horizon Class | r = 13.7B ly | No physics yet |
+<table class="deepfield-tier-table">
+<tr><td>01</td><td>Primordial Micro</td><td>≤ 10¹² kg</td><td><span class="tier-theory">Theoretical</span></td></tr>
+<tr><td>02</td><td>Stellar-Mass</td><td>3–100 M☉</td><td><span class="tier-confirmed">Confirmed</span></td></tr>
+<tr><td>03</td><td>Intermediate-Mass</td><td>100–100K M☉</td><td><span class="tier-partial">~50 Candidates</span></td></tr>
+<tr><td>04</td><td>Supermassive</td><td>1M–9B M☉</td><td><span class="tier-imaged">Imaged</span></td></tr>
+<tr><td>05</td><td>Ultramassive</td><td>9B–100B M☉</td><td><span class="tier-partial">TON 618</span></td></tr>
+<tr><td>06</td><td>Stupendously Large</td><td>100B–10¹⁵ M☉</td><td><span class="tier-unknown">Unconfirmed</span></td></tr>
+<tr><td>07</td><td>Cosmic-Horizon Class</td><td>r = 13.7B ly</td><td><span class="tier-unknown">No physics yet</span></td></tr>
+</table>
+
+---
+
+## Section Divider
+
+> [!divider] SECTION_END · 0347.001
 
 ---
 
@@ -168,7 +199,21 @@ $$T_H = \frac{\hbar c^3}{8\pi G M k_B}$$
 
 ---
 
-#physics #quantum-mechanics #hawking-radiation #deepfield
+## Embed
+
+A note embed renders inside a left-bar container with a mono uppercase title:
+
+![[The Quantum Vacuum]]
+
+---
+
+## Tags
+
+Tags render as bracket-wrapped `[#tag]` markers, inline and below:
+
+This note touches #physics and #astronomy directly in a sentence.
+
+#physics #quantum-mechanics #hawking-radiation #deepfield 
 
 ---
 
