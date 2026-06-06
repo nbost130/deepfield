@@ -3,6 +3,12 @@
 All notable changes to Deepfield are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/); versions follow [Semantic Versioning](https://semver.org/).
 
+## [1.0.1] — 2026-06-06
+
+### Fixed
+- Removed the unsupported `description` field from `manifest.json` (themes use the community directory entry for descriptions, not the manifest).
+- Re-cut the release so the tagged revision includes `cover.png`, which the directory entry references for its thumbnail.
+
 ## [1.0.0] — 2026-06-06
 
 First public release.
@@ -26,4 +32,5 @@ First public release.
 - Custom callout components require the `deepfield-components.css` snippet enabled.
 - Mermaid is themed via `!important` overrides (Obsidian exposes no mermaid variables); labels are forced legible.
 
+[1.0.1]: https://github.com/nbost130/deepfield/releases/tag/1.0.1
 [1.0.0]: https://github.com/nbost130/deepfield/releases/tag/1.0.0

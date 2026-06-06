@@ -1,9 +1,8 @@
 {
   "name": "Deepfield",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minAppVersion": "1.0.0",
   "author": "Nathan Bost",
   "authorUrl": "https://github.com/nbost130",
-  "fundingUrl": "https://github.com/sponsors/nbost130",
-  "description": "Dark + light sci-fi editorial theme with 20 color palettes (8 from real planetary spectral data), custom callout components, and distinct task-state glyphs. Inspired by the Caelum video aesthetic."
+  "fundingUrl": "https://github.com/sponsors/nbost130"
 }
