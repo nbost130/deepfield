@@ -201,9 +201,9 @@ $$T_H = \frac{\hbar c^3}{8\pi G M k_B}$$
 
 ## Embed
 
-A note embed renders inside a left-bar container with a mono uppercase title:
+A section embed renders inside a left-bar container with a mono uppercase title:
 
-![[The Quantum Vacuum]]
+![[The Quantum Vacuum#The Core Idea]]
 
 ---
 

@@ -623,6 +623,26 @@ body.theme-dark a.tag:hover {
   text-decoration: none;
 }
 
+/* Live Preview / edit mode — tags render as .cm-hashtag spans */
+body.theme-dark .cm-s-obsidian .cm-hashtag {
+  font-family: var(--font-monospace-theme) !important;
+  font-size: 0.85em !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: var(--text-muted) !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 1px !important;
+}
+body.theme-dark .cm-s-obsidian .cm-hashtag-begin::before {
+  content: '[';
+  color: var(--interactive-accent);
+}
+body.theme-dark .cm-s-obsidian .cm-hashtag-end::after {
+  content: ']';
+  color: var(--interactive-accent);
+}
+
 /* ── FILE EXPLORER ── */
 body.theme-dark .nav-folder-title,
 body.theme-dark .nav-file-title {
