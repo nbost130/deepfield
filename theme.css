@@ -341,53 +341,77 @@ body.theme-dark .cm-content ul ul > li::marker {
   color: var(--text-faint);
 }
 
+/* Live Preview nested bullets (depth 2+) — open circle by restyling the
+   existing .list-bullet::after BOX (transparent fill + border), never
+   adding content (which doubles the marker). */
+body.theme-dark .markdown-source-view.mod-cm6 .HyperMD-list-line-2 .list-bullet::after,
+body.theme-dark .markdown-source-view.mod-cm6 .HyperMD-list-line-3 .list-bullet::after,
+body.theme-dark .markdown-source-view.mod-cm6 .HyperMD-list-line-4 .list-bullet::after,
+body.theme-dark .markdown-source-view.mod-cm6 .HyperMD-list-line-5 .list-bullet::after,
+body.theme-dark .markdown-source-view.mod-cm6 .HyperMD-list-line-6 .list-bullet::after {
+  background-color: transparent !important;
+  border: 1px solid var(--list-marker-color, var(--text-faint)) !important;
+  width: calc(var(--list-bullet-size, 5px) - 1px) !important;
+  height: calc(var(--list-bullet-size, 5px) - 1px) !important;
+}
+
 /* ── MERMAID DIAGRAMS ──
-   Mermaid injects scoped <style> into the SVG; node fill kept light
-   enough that labels read even if mermaid's own color wins, and labels
-   forced bright at high specificity. ── */
+   Obsidian exposes NO --mermaid-* variables; mermaid injects an
+   ID-scoped <style> inside the SVG. Only !important overrides hitting
+   EVERY shape primitive + both color AND fill on labels win. ── */
 body.theme-dark .mermaid { background: transparent; }
 
+/* Node shapes — every primitive + the label-container wrapper */
 body.theme-dark .mermaid .node rect,
 body.theme-dark .mermaid .node circle,
+body.theme-dark .mermaid .node ellipse,
 body.theme-dark .mermaid .node polygon,
 body.theme-dark .mermaid .node path,
-body.theme-dark .mermaid .node .basic.label-container {
+body.theme-dark .mermaid .label-container,
+body.theme-dark .mermaid rect.basic,
+body.theme-dark .mermaid .node .basic {
   fill: #14233a !important;
   stroke: var(--interactive-accent) !important;
   stroke-width: 1px !important;
 }
+
+/* Edges */
 body.theme-dark .mermaid .edgePath .path,
-body.theme-dark .mermaid .flowchart-link {
+body.theme-dark .mermaid .flowchart-link,
+body.theme-dark .mermaid path.flowchart-link {
   stroke: var(--text-faint) !important;
+  fill: none !important;
 }
 
-/* Node labels — force bright, cover every element mermaid may use */
-body.theme-dark .mermaid .node .nodeLabel,
-body.theme-dark .mermaid .node .nodeLabel p,
+/* Node label text — color (HTML) AND fill (SVG text), every element */
+body.theme-dark .mermaid .nodeLabel,
+body.theme-dark .mermaid .nodeLabel p,
+body.theme-dark .mermaid span.nodeLabel,
 body.theme-dark .mermaid .node .label,
-body.theme-dark .mermaid .node .label *,
-body.theme-dark .mermaid .node foreignObject *,
+body.theme-dark .mermaid .node .label div,
+body.theme-dark .mermaid .node .label span,
+body.theme-dark .mermaid .node .label p,
+body.theme-dark .mermaid .node foreignObject div,
 body.theme-dark .mermaid .node text,
-body.theme-dark .mermaid .node tspan,
-body.theme-dark .mermaid g.label,
-body.theme-dark .mermaid g.label * {
-  fill: #e8f2ff !important;
+body.theme-dark .mermaid .node tspan {
   color: #e8f2ff !important;
+  fill: #e8f2ff !important;
   font-family: var(--font-text-theme) !important;
 }
 
-/* Edge labels (No / Yes) — bright with dark backing */
+/* Edge labels (No / Yes) — bright text on dark backing */
 body.theme-dark .mermaid .edgeLabel,
-body.theme-dark .mermaid .edgeLabel *,
 body.theme-dark .mermaid .edgeLabel p,
-body.theme-dark .mermaid .edgeLabel rect {
+body.theme-dark .mermaid .edgeLabel span,
+body.theme-dark .mermaid .edgeLabel div {
   color: #c8d8ec !important;
   fill: #c8d8ec !important;
   background-color: var(--background-primary) !important;
 }
-body.theme-dark .mermaid .edgeLabel rect {
+body.theme-dark .mermaid .edgeLabel rect,
+body.theme-dark .mermaid .edgeLabel .label-container {
   fill: var(--background-primary) !important;
-  opacity: 0.9 !important;
+  opacity: 0.92 !important;
 }
 
 body.theme-dark .mermaid .cluster rect {
