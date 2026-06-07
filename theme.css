@@ -1178,36 +1178,32 @@ body.deepfield-vintage-cosmos {
 }
 
 /* ════════════════════════════════════════════════════════════════
-   MOBILE POPUP MENUS — Solid (kill translucent / frosted background)
-   On mobile, Obsidian renders popup menus (the sidebar view switcher,
-   long-press menus) as a frosted bottom-sheet — a translucent background
-   using --background-translucent + a backdrop blur — so the file list
-   bleeds through. Override the translucent var to an opaque surface and
-   drop the blur. Selectors carry .is-mobile/.is-phone so they outrank
-   Obsidian's mobile defaults; the plain .menu covers desktop too.
+   POPUP MENUS — opaque (kill Obsidian's mobile frosted-glass)
+   Confirmed against Obsidian app.css 1.12.7: on mobile, menus, prompts,
+   and suggestions are frosted via a color-mix background at
+   --blur-opacity-m (90%) PLUS --{menu,prompt,suggestion}-backdrop-filter:
+   var(--blur-m). On Deepfield's near-black surfaces that 10% + blur bleeds
+   the content behind (worst inside the sidebar). Neutralize through
+   Obsidian's OWN variables — opaque color-mix (100%) + no blur — so it
+   covers every frosted popover wherever it renders, with no !important and
+   no hardcoded colors. The mobile drawer itself is already opaque
+   (--mobile-sidebar-background → --background-secondary), so it needs nothing.
    ════════════════════════════════════════════════════════════════ */
-.is-mobile,
-.is-phone {
-  --background-translucent: var(--background-secondary);
+.is-mobile {
+  --blur-opacity-m: 100%;
+  --blur-opacity-s: 100%;
+  --menu-backdrop-filter: none;
+  --prompt-backdrop-filter: none;
+  --suggestion-backdrop-filter: none;
 }
 
-/* Desktop popup menus */
+/* Desktop: drop any backdrop blur on popovers (cheap insurance) */
 .menu,
 .suggestion-container {
-  background-color: var(--background-secondary);
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
 }
 
-/* Mobile/iOS renders menus as a frosted bottom-sheet via a more-specific
-   built-in selector; !important guarantees the opaque override wins
-   regardless of Obsidian's iOS selector specificity. */
-.is-mobile .menu,
-.is-phone .menu {
-  background-color: var(--background-secondary) !important;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-}
 
 /* ════════════════════════════════════════════════════════════════
    DESTRUCTIVE BUTTONS — Solid warning (Delete, etc.)
