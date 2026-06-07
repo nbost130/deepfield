@@ -238,7 +238,7 @@ body.theme-dark {
   /* Spacing */
   --file-line-width:         720px;
   --list-indent:             1.5em;
-  --metadata-label-width:    8em;
+  --metadata-label-width:    9.5em;
 }
 
 /* ════════════════════════════════════════════════════════════════
@@ -727,14 +727,14 @@ body .metadata-property:last-child { border-bottom: none; }
 body .metadata-property-key,
 body .metadata-property-key-input {
   font-family: var(--font-monospace-theme);
-  font-size: 0.65em;
-  letter-spacing: 0.18em;
+  font-size: 0.8em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-faint);
 }
 
 body .metadata-property-value {
-  font-size: 0.85em;
+  font-size: 0.9em;
   color: var(--text-muted);
 }
 
