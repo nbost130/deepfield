@@ -7,8 +7,8 @@
    - Overrides Minimal's HSL base system (--base-h/s/l, --accent-h/s/l)
      so Minimal users get full cascade. Falls back to direct Obsidian
      variable overrides for non-Minimal installs.
-   - Adds custom .deepfield-* CSS classes for special components
-     (origin tag, attribution, tier transition, HUD panel, etc.)
+   - Inline content components (callouts + .deepfield-* helpers) live in
+     the companion deepfield-components.css snippet, not in this theme file.
 
    Install: copy this folder to your vault's .obsidian/themes/
    Recommended: also install the Minimal theme and Style Settings plugin.
@@ -125,7 +125,7 @@ body.theme-dark {
   --modal-background:                #040a10;
 
   /* Text */
-  --text-normal:      #d4e4f7;
+  --text-normal:      #c3d3e6;
   --text-muted:       #8aabcc;
   --text-faint:       #3d607a;
   --text-on-accent:   #020509;
@@ -138,7 +138,7 @@ body.theme-dark {
   --text-selection:   rgba(var(--interactive-accent-rgb), 0.2);
 
   /* Headings */
-  --h1-color:  #e8f2ff;
+  --h1-color:  #d4e4f7;
   --h2-color:  #c8dcf5;
   --h3-color:  #9ab8dc;
   --h4-color:  #7a98bc;
@@ -209,7 +209,7 @@ body.theme-dark {
   /* Checkboxes */
   --checkbox-color:          #1d6fff;
   --checkbox-color-hover:    #4d9fff;
-  --checkbox-border-color:   rgba(var(--interactive-accent-rgb), 0.3);
+  --checkbox-border-color:   rgba(var(--interactive-accent-rgb), 0.55);
   --checkbox-marker-color:   #020509;
 
   /* Graph */
@@ -700,7 +700,7 @@ body tr:nth-child(even) td {
 body hr {
   border: none;
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(var(--interactive-accent-rgb),.25) 30%, rgba(var(--interactive-accent-rgb),.25) 70%, transparent);
+  background: linear-gradient(to right, transparent, rgba(var(--interactive-accent-rgb),.45) 30%, rgba(var(--interactive-accent-rgb),.45) 70%, transparent);
   margin: 2em 0;
 }
 
@@ -874,216 +874,6 @@ body .prompt-input {
 body .suggestion-item.is-selected {
   background: rgba(var(--interactive-accent-rgb), 0.1);
   border-left: 2px solid var(--interactive-accent);
-}
-
-/* ────────────────────────────────────────────────────────────
-   DEEPFIELD CUSTOM CSS CLASSES
-   Use via cssClass frontmatter or with the Style Settings plugin.
-   ──────────────────────────────────────────────────────────── */
-
-/* ── Origin tag — "SUPERNOVA REMNANT" rectangular label
-   Usage: add class="deepfield-origin" to a paragraph ── */
-body .deepfield-origin {
-  display: inline-block;
-  border: 1px solid rgba(var(--interactive-accent-rgb), 0.3);
-  font-family: var(--font-monospace-theme);
-  font-size: 0.6em;
-  letter-spacing: 0.22em;
-  color: var(--text-faint);
-  text-transform: uppercase;
-  padding: 0.2em 0.6em;
-  margin-bottom: 0.8em;
-}
-
-/* ── HUD panel — transparent bg + vertical left bar
-   Usage: wrap content in a div with class deepfield-hud ── */
-body .deepfield-hud {
-  display: flex;
-  margin: 1em 0;
-}
-
-body .deepfield-hud-bar {
-  width: 3px;
-  background: var(--interactive-accent);
-  opacity: 0.6;
-  flex-shrink: 0;
-}
-
-body .deepfield-hud-body {
-  flex: 1;
-  padding: 0.75em 1em;
-  background: rgba(var(--interactive-accent-rgb), 0.04);
-  border: 1px solid rgba(var(--interactive-accent-rgb), 0.1);
-  border-left: none;
-}
-
-/* ── Punchline — "SLOWLY · UNSTOPPABLY"
-   Usage: paragraph with class deepfield-punchline ── */
-body .deepfield-punchline {
-  font-family: var(--font-monospace-theme);
-  font-size: 0.72em;
-  letter-spacing: 0.22em;
-  color: #4d9fff;
-  text-transform: uppercase;
-  margin: 1em 0;
-}
-
-/* ── Bracket container — L-corners only, no full border
-   Usage: div.deepfield-bracket > div.deepfield-bracket-inner ── */
-body .deepfield-bracket {
-  position: relative;
-  padding: 1em 1.2em;
-  margin: 1em 0;
-}
-
-body .deepfield-bracket::before,
-body .deepfield-bracket::after,
-body .deepfield-bracket-inner::before,
-body .deepfield-bracket-inner::after {
-  content: '';
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  border-color: rgba(var(--interactive-accent-rgb), 0.4);
-  border-style: solid;
-}
-
-body .deepfield-bracket::before  { top: 0; left: 0; border-width: 1px 0 0 1px; }
-body .deepfield-bracket::after   { top: 0; right: 0; border-width: 1px 1px 0 0; }
-body .deepfield-bracket-inner::before { bottom: 0; left: 0; border-width: 0 0 1px 1px; }
-body .deepfield-bracket-inner::after  { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
-
-/* ── Scan line divider
-   Usage: div.deepfield-scan ── */
-body .deepfield-scan {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  margin: 1.5em 0;
-}
-
-body .deepfield-scan::before,
-body .deepfield-scan::after {
-  content: '';
-  display: block;
-  width: 5px;
-  height: 5px;
-  background: var(--interactive-accent);
-  flex-shrink: 0;
-}
-
-body .deepfield-scan-rule {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(to right, rgba(var(--interactive-accent-rgb),.5), transparent);
-}
-
-/* ── LED status indicator
-   Usage: span.deepfield-led, span.deepfield-led.on, span.deepfield-led.warn ── */
-body .deepfield-led {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: 1px solid var(--text-faint);
-  background: transparent;
-  margin-right: 0.5em;
-  vertical-align: middle;
-}
-
-body .deepfield-led.on {
-  background: var(--interactive-accent);
-  border-color: #4d9fff;
-  box-shadow: 0 0 4px var(--interactive-accent);
-}
-
-body .deepfield-led.warn {
-  background: #c07820;
-  border-color: #e09840;
-  box-shadow: 0 0 4px #c07820;
-}
-
-/* ── Attribution block — PROOF · LOCATION · YEAR / NAME / descriptor
-   Usage: div.deepfield-attribution ── */
-body .deepfield-attribution {
-  border-left: 2px solid var(--interactive-accent);
-  padding: 0.8em 1.2em;
-  margin: 1.5em 0;
-  background: rgba(var(--interactive-accent-rgb), 0.04);
-}
-
-body .deepfield-attribution-meta {
-  font-family: var(--font-monospace-theme);
-  font-size: 0.6em;
-  letter-spacing: 0.2em;
-  color: var(--text-faint);
-  text-transform: uppercase;
-  margin-bottom: 0.3em;
-}
-
-body .deepfield-attribution-name {
-  font-size: 1.1em;
-  font-weight: 700;
-  color: var(--text-normal);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-bottom: 0.25em;
-}
-
-body .deepfield-attribution-desc {
-  font-family: var(--font-monospace-theme);
-  font-size: 0.65em;
-  letter-spacing: 0.14em;
-  color: var(--text-muted);
-  text-transform: uppercase;
-}
-
-/* ── Progress / HUD bar
-   Usage: div.deepfield-bar > div.deepfield-bar-fill ── */
-body .deepfield-bar {
-  margin: 0.5em 0;
-}
-
-body .deepfield-bar-label {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-monospace-theme);
-  font-size: 0.58em;
-  letter-spacing: 0.15em;
-  color: var(--text-faint);
-  text-transform: uppercase;
-  margin-bottom: 0.3em;
-}
-
-body .deepfield-bar-track {
-  height: 3px;
-  background: rgba(var(--interactive-accent-rgb), 0.1);
-  position: relative;
-}
-
-body .deepfield-bar-fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  background: var(--interactive-accent);
-}
-
-body .deepfield-bar-fill::after {
-  content: '';
-  position: absolute;
-  right: -1px;
-  top: -2px;
-  width: 1px;
-  height: 7px;
-  background: #4d9fff;
-}
-
-/* ── Callout overrides — Caelum style ── */
-body .callout {
-  border-radius: 0;
-  border-left-width: 2px;
-  background: rgba(var(--interactive-accent-rgb), 0.05);
 }
 
 body .callout-title {

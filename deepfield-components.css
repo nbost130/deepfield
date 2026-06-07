@@ -432,7 +432,7 @@
   content: '' !important;
   flex: 1 !important;
   height: 1px !important;
-  background: linear-gradient(to right, rgba(var(--interactive-accent-rgb, 29,111,255),.5), rgba(var(--interactive-accent-rgb, 29,111,255),.15)) !important;
+  background: linear-gradient(to right, rgba(var(--interactive-accent-rgb, 29,111,255),.45), rgba(var(--interactive-accent-rgb, 29,111,255),.15)) !important;
   display: block !important;
   margin-right: 0.8em !important;
 }
@@ -441,7 +441,7 @@
   content: '' !important;
   flex: 1 !important;
   height: 1px !important;
-  background: linear-gradient(to left, rgba(var(--interactive-accent-rgb, 29,111,255),.5), rgba(var(--interactive-accent-rgb, 29,111,255),.15)) !important;
+  background: linear-gradient(to left, rgba(var(--interactive-accent-rgb, 29,111,255),.45), rgba(var(--interactive-accent-rgb, 29,111,255),.15)) !important;
   display: block !important;
   margin-left: 0.8em !important;
 }
@@ -593,17 +593,8 @@
 .deepfield-scan-rule {
   flex: 1;
   height: 1px;
-  background: linear-gradient(to right, rgba(var(--interactive-accent-rgb, 29,111,255),.5), transparent);
+  background: linear-gradient(to right, rgba(var(--interactive-accent-rgb, 29,111,255),.45), transparent);
 }
-
-.deepfield-coord {
-  font-family: var(--font-monospace-theme, monospace);
-  font-size: 0.6em;
-  letter-spacing: 0.14em;
-  color: var(--text-faint, #3d607a);
-  text-transform: uppercase;
-}
-.deepfield-coord span { color: var(--text-muted, #8aabcc); }
 
 .deepfield-bar { margin: 0.6em 0; }
 .deepfield-bar-label {
