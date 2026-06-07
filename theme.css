@@ -1233,6 +1233,21 @@ body.is-mobile.theme-dark {
   --interactive-normal: var(--background-secondary-alt);
 }
 
+/* Selected view in that switcher: match Deepfield's file-list active style
+   (.nav-file-title.is-active) — square, faint-accent wash, right accent bar,
+   accent text — instead of Obsidian's rounded pill. Tracks the palette. */
+body.is-mobile .workspace-drawer-tab-options .workspace-tab-header.is-active .workspace-tab-header-inner-title,
+body.is-mobile .workspace-drawer-tab-options .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+body.is-mobile .workspace-drawer-tab-options .workspace-tab-header.is-active {
+  color: var(--text-accent);
+  --icon-color: var(--text-accent);
+}
+body.is-mobile .workspace-drawer-tab-options .workspace-tab-header.is-active .workspace-tab-header-inner {
+  background-color: rgba(var(--interactive-accent-rgb), 0.10) !important;
+  border-radius: 0;
+  border-right: 2px solid var(--interactive-accent);
+}
+
 
 /* ════════════════════════════════════════════════════════════════
    DESTRUCTIVE BUTTONS — Solid warning (Delete, etc.)
