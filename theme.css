@@ -1191,13 +1191,22 @@ body.deepfield-vintage-cosmos {
   --background-translucent: var(--background-secondary);
 }
 
-.is-mobile .menu,
-.is-phone .menu,
+/* Desktop popup menus */
 .menu,
 .suggestion-container {
   background-color: var(--background-secondary);
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
+}
+
+/* Mobile/iOS renders menus as a frosted bottom-sheet via a more-specific
+   built-in selector; !important guarantees the opaque override wins
+   regardless of Obsidian's iOS selector specificity. */
+.is-mobile .menu,
+.is-phone .menu {
+  background-color: var(--background-secondary) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
 }
 
 /* ════════════════════════════════════════════════════════════════
