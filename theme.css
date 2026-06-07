@@ -1217,6 +1217,22 @@ body.deepfield-vintage-cosmos {
   backdrop-filter: none;
 }
 
+/* ════════════════════════════════════════════════════════════════
+   MOBILE DRAWER VIEW-SWITCHER — opaque background  ◆ ROOT CAUSE FIX ◆
+   The mobile sidebar view-switcher (.workspace-drawer-tab-options-list,
+   the Files/Search/Tags list) uses background-color: var(--interactive-
+   normal). Obsidian aliases that on mobile dark:
+       .is-mobile.theme-dark { --interactive-normal: var(--background-modifier-border); }
+   Deepfield sets --background-modifier-border to rgba(accent, 0.04) — a
+   4%-alpha translucent accent (intended for subtle borders), so the menu
+   ends up 96% see-through. Every other theme defines --interactive-normal
+   as an opaque surface and never hits this. Match them: opaque surface on
+   mobile dark. (Element identified via colored-outline diagnostic — GREEN.)
+   ════════════════════════════════════════════════════════════════ */
+body.is-mobile.theme-dark {
+  --interactive-normal: var(--background-secondary-alt);
+}
+
 
 /* ════════════════════════════════════════════════════════════════
    DESTRUCTIVE BUTTONS — Solid warning (Delete, etc.)
