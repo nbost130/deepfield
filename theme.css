@@ -1197,6 +1197,19 @@ body.deepfield-vintage-cosmos {
   --suggestion-backdrop-filter: none;
 }
 
+/* Bulletproof: directly force the popover backgrounds fully opaque on mobile,
+   overriding Obsidian's color-mix(... 90%, transparent). The variable route
+   above SHOULD do this, but this guarantees the 10% gap is closed even if the
+   color-mix is resolved before the variable cascade reaches it. */
+.is-mobile .menu,
+.is-phone .menu,
+.is-mobile .prompt,
+.is-mobile .suggestion-container {
+  background-color: var(--background-secondary) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
 /* Desktop: drop any backdrop blur on popovers (cheap insurance) */
 .menu,
 .suggestion-container {
