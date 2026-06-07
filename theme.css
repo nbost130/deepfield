@@ -1386,3 +1386,102 @@ body.deepfield-vintage-cosmos {
   --interactive-accent-rgb: 176,112,56;
   --code-normal: #d09050; --checkbox-color: #b07038;
 }
+
+/* ════════════════════════════════════════════════════════════════
+   MOBILE POPUP MENUS — Solid (kill translucent / frosted background)
+   On mobile, Obsidian renders popup menus (the sidebar view switcher,
+   long-press menus) as a frosted bottom-sheet — a translucent background
+   using --background-translucent + a backdrop blur — so the file list
+   bleeds through. Override the translucent var to an opaque surface and
+   drop the blur. Selectors carry .is-mobile/.is-phone so they outrank
+   Obsidian's mobile defaults; the plain .menu covers desktop too.
+   ════════════════════════════════════════════════════════════════ */
+.is-mobile,
+.is-phone {
+  --background-translucent: var(--background-secondary);
+}
+
+.is-mobile .menu,
+.is-phone .menu,
+.menu,
+.suggestion-container {
+  background-color: var(--background-secondary);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   DESTRUCTIVE BUTTONS — Solid warning (Delete, etc.)
+   Obsidian's .mod-warning button falls back to --background-modifier-error
+   (a 15%-alpha red), rendering as a washed-out maroon with low-contrast
+   text — e.g. the Delete button in the folder-delete confirm modal. Give
+   it a solid fill from the theme's own tokens: --text-error as background,
+   --text-on-accent as text. High contrast in both modes (dark: light-red
+   bg + dark text; light: deep-red bg + white text).
+   ════════════════════════════════════════════════════════════════ */
+button.mod-warning,
+.mod-warning,
+button.mod-destructive,
+.mod-destructive {
+  background-color: var(--text-error);
+  color: var(--text-on-accent);
+  border: none;
+}
+
+button.mod-warning:hover,
+.mod-warning:hover,
+button.mod-destructive:hover,
+.mod-destructive:hover {
+  background-color: var(--text-error);
+  filter: brightness(1.08);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   NOTEBOOK NAVIGATOR — Match Deepfield's native file explorer
+   NN inherits theme tokens, but defaults its item names to --text-normal,
+   while Obsidian's native explorer colors items with --nav-item-color
+   (= --text-muted). In Deepfield those are far apart (near-white vs slate-
+   blue), so NN read as unthemed. Point NN names at --text-muted, mirror the
+   explorer's active state, square the corners, and match the font size. All
+   colors route through --text-muted / --interactive-accent / --text-accent,
+   so NN tracks palette + Style Settings changes — no hardcoded hex.
+   Cascade note: NN sets its --nn-theme-* defaults on plain `body` and its
+   stylesheet loads after the theme, so a `body` override ties and loses.
+   Override on body.theme-dark / body.theme-light (higher specificity) and
+   prefix direct rules with .notebook-navigator — no !important needed.
+   ════════════════════════════════════════════════════════════════ */
+body.theme-dark,
+body.theme-light {
+  /* THE FIX: match the native file explorer. Obsidian's explorer colors items
+     with --nav-item-color (defaults to --text-muted = slate-blue). NN instead
+     defaults names to --text-normal (near-white). Point NN names at --text-muted
+     so the tree reads identically to .nav-file-title / .nav-folder-title. */
+  --nn-theme-navitem-name-color:      var(--text-muted);
+  --nn-theme-navitem-file-name-color: var(--text-muted);
+  --nn-theme-file-name-color:         var(--text-muted);
+
+  /* Active / selected — mirror .nav-file-title.is-active */
+  --nn-theme-navitem-selected-bg:          rgba(var(--interactive-accent-rgb), 0.10);
+  --nn-theme-navitem-selected-name-color:  var(--text-accent);
+  --nn-theme-navitem-selected-icon-color:  var(--text-accent);
+  --nn-theme-navitem-selected-inactive-bg: rgba(var(--interactive-accent-rgb), 0.06);
+  --nn-theme-file-selected-bg:             rgba(var(--interactive-accent-rgb), 0.10);
+  --nn-theme-file-selected-name-color:     var(--text-accent);
+  --nn-theme-file-selected-inactive-bg:    rgba(var(--interactive-accent-rgb), 0.06);
+
+  /* Square corners — Deepfield is flat */
+  --nn-theme-navitem-border-radius: 0;
+  --nn-theme-file-border-radius:    0;
+}
+
+/* Bulk look — match the native explorer's smaller, letter-spaced text.
+   Prefixed with .notebook-navigator (0,2,0) to outrank the plugin's bare
+   .nn-navitem-name (0,1,0), which loads after the theme. font-size is set
+   directly (not via NN's JS --nn-setting-nav-font-size var) so it wins. */
+.notebook-navigator .nn-navitem-name,
+.notebook-navigator .nn-file-name,
+.notebook-navigator-mobile .nn-navitem-name,
+.notebook-navigator-mobile .nn-file-name {
+  font-size: 0.8em;
+  letter-spacing: 0.02em;
+}
